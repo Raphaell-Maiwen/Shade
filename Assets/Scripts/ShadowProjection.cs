@@ -22,7 +22,9 @@ public class ShadowProjection : MonoBehaviour{
     }
 
     public void UpdateShadow(GameObject objectToUpdate) {
-        Vector3[] vertices = GetVertices(objectToUpdate.transform.position, objectToUpdate.transform.lossyScale);
+        print(objectToUpdate.transform.forward);
+
+        Vector3[] vertices = GetVertices(objectToUpdate.transform.position, objectToUpdate.transform.lossyScale, objectToUpdate);
 
         //Vector3[] vertices = objectToUpdate.GetComponent<MeshFilter>().mesh.vertices;
         RaycastHit hit;
@@ -30,7 +32,7 @@ public class ShadowProjection : MonoBehaviour{
         int layerMask = LayerMask.GetMask("Wall");
 
         for (int i = 0; i < vertices.Length; i++) {
-            print(vertices[i]);
+            //print(vertices[i]);
 
             //vertices[i] += objectToUpdate.transform.position;
             if (Physics.Raycast(transform.position, Vector3.Normalize(vertices[i] - transform.position), out hit, 50, layerMask))
@@ -56,20 +58,21 @@ public class ShadowProjection : MonoBehaviour{
         return objectsToProject.ToArray();
     }
 
-    Vector3[] GetVertices(Vector3 center, Vector3 size) {
+    Vector3[] GetVertices(Vector3 center, Vector3 size, GameObject GO) {
         float width = size.x / 2;
         float height = size.y / 2;
         float depth = size.z / 2;
 
         List<Vector3> vertices = new List<Vector3>();
-        vertices.Add(new Vector3(center.x - width, center.y - height, center.z - depth));
+        vertices.Add(center + GO.transform.up * height + GO.transform.right * width + transform.forward * depth);
+        /*vertices.Add(new Vector3(center.x - width, center.y - height, center.z - depth));
         vertices.Add(new Vector3(center.x - width, center.y - height, center.z + depth));
         vertices.Add(new Vector3(center.x - width, center.y + height, center.z + depth));
         vertices.Add(new Vector3(center.x - width, center.y + height, center.z - depth));
         vertices.Add(new Vector3(center.x + width, center.y + height, center.z - depth));
         vertices.Add(new Vector3(center.x + width, center.y + height, center.z + depth));
         vertices.Add(new Vector3(center.x + width, center.y - height, center.z - depth));
-        vertices.Add(new Vector3(center.x + width, center.y - height, center.z + depth));
+        vertices.Add(new Vector3(center.x + width, center.y - height, center.z + depth));*/
 
         return vertices.ToArray();
     }
