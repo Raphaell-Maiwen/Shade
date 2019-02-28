@@ -22,7 +22,7 @@ public class ShadowProjection : MonoBehaviour{
     }
 
     public void UpdateShadow(GameObject objectToUpdate) {
-        print(objectToUpdate.transform.forward);
+        //print(objectToUpdate.transform.forward);
 
         Vector3[] vertices = GetVertices(objectToUpdate.transform.position, objectToUpdate.transform.lossyScale, objectToUpdate);
 
@@ -65,14 +65,13 @@ public class ShadowProjection : MonoBehaviour{
 
         List<Vector3> vertices = new List<Vector3>();
         vertices.Add(center + GO.transform.up * height + GO.transform.right * width + transform.forward * depth);
-        /*vertices.Add(new Vector3(center.x - width, center.y - height, center.z - depth));
-        vertices.Add(new Vector3(center.x - width, center.y - height, center.z + depth));
-        vertices.Add(new Vector3(center.x - width, center.y + height, center.z + depth));
-        vertices.Add(new Vector3(center.x - width, center.y + height, center.z - depth));
-        vertices.Add(new Vector3(center.x + width, center.y + height, center.z - depth));
-        vertices.Add(new Vector3(center.x + width, center.y + height, center.z + depth));
-        vertices.Add(new Vector3(center.x + width, center.y - height, center.z - depth));
-        vertices.Add(new Vector3(center.x + width, center.y - height, center.z + depth));*/
+        vertices.Add(center - GO.transform.up * height + GO.transform.right * width + transform.forward * depth);
+        vertices.Add(center - GO.transform.up * height - GO.transform.right * width + transform.forward * depth);
+        vertices.Add(center - GO.transform.up * height + GO.transform.right * width - transform.forward * depth);
+        vertices.Add(center - GO.transform.up * height - GO.transform.right * width - transform.forward * depth);
+        vertices.Add(center + GO.transform.up * height - GO.transform.right * width - transform.forward * depth);
+        vertices.Add(center + GO.transform.up * height - GO.transform.right * width + transform.forward * depth);
+        vertices.Add(center + GO.transform.up * height + GO.transform.right * width - transform.forward * depth);
 
         return vertices.ToArray();
     }
