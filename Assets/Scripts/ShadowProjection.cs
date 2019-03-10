@@ -40,8 +40,9 @@ public class ShadowProjection : MonoBehaviour{
             //vertices[i] += objectToUpdate.transform.position;
             if (Physics.Raycast(transform.position, Vector3.Normalize(meshVertices[i] - transform.position), out hit, 50, layerMask))
             {
-                Debug.DrawRay(transform.position, Vector3.Normalize((meshVertices[i] - transform.position)) * hit.distance, Color.red);
+                //Debug.DrawRay(transform.position, Vector3.Normalize((meshVertices[i] - transform.position)) * hit.distance, Color.red);
                 shadowVertices.Add(hit.point);
+                print(hit.point.x);
             }
         }
 
@@ -57,19 +58,31 @@ public class ShadowProjection : MonoBehaviour{
 
         List<Vector3> outerShadowVertices = new List<Vector3>();
 
-        for (int i = 0; i < amountShadowVertices; i++)
+        /*for (int i = 0; i < amountShadowVertices; i++)
         {
             //IsOuterVertex(int nvert, float[] vertx, float[] verty, float testx, float testy)
             if (IsOuterVertex(amountShadowVertices, vertx, verty, shadowVertices[i].x, shadowVertices[i].y))
             {
                 outerShadowVertices.Add(shadowVertices[i]);
             }
+        }*/
+
+        //shadowVertices = outerShadowVertices;
+
+        shadowVertices = GetOuterVertices(shadowVertices);
+
+        //For testing purposes
+        print(shadowVertices.Count);
+        for (int i = 0; i < shadowVertices.Count; i++) {
+            //print(vertices[i]);
+
+            //vertices[i] += objectToUpdate.transform.position;
+            if (Physics.Raycast(transform.position, Vector3.Normalize(shadowVertices[i] - transform.position), out hit, 50, layerMask)) {
+                Debug.DrawRay(transform.position, Vector3.Normalize((shadowVertices[i] - transform.position)) * hit.distance, Color.red);
+            }
         }
 
-        shadowVertices = outerShadowVertices;
-
-        print(shadowVertices.Count);
-
+        //TODO: GenerateMesh
         GenerateMesh(shadowVertices.ToArray());
     }
 
@@ -143,64 +156,68 @@ public class ShadowProjection : MonoBehaviour{
         return c;
     }
 
-      /*List<Vector3> GetOuterVertices(List<Vector3> vertices) {
+    List<Vector3> GetOuterVertices(List<Vector3> vertices) {
+        List<Vector3> outerVertices = new List<Vector3>();
+        Vector3[] roundedVertices = new Vector3[vertices.Count];
+
+        //Only keep the two first decimals of every coordinate
+        for (int i = 0; i < vertices.Count; i++) {
+            roundedVertices[i] = new Vector3(Mathf.Round(vertices[i].x * 100) / 100, Mathf.Round(vertices[i].y * 100) / 100, 0);
+        }
+
+        float maxY = roundedVertices[0].y;
+        float minY = roundedVertices[0].y;
+        float maxX = roundedVertices[0].x;
+        float minX = roundedVertices[0].x;
 
 
-            float maxY = vertices[0].y;
-            float minY = vertices[0].y;
-            float maxX = vertices[0].x;
-            float minX = vertices[0].x;
-
-            List<Vector3> outerVertices = new List<Vector3>();
-
-            //Finding the greatest and smallest points
-            for (int i = 1; i < vertices.Count; i++) {
-                //Finding the biggest and smallest x points
-                if (vertices[i].x > maxX){
-                    maxX = vertices[i].x;
-                }
-                else if (vertices[i].x < minX) {
-                    minX = vertices[i].x;
-                }
-
-                //Finding the biggest and smallest y points
-                if (vertices[i].y > maxY){
-                    maxY = vertices[i].y;
-                }
-                else if (vertices[i].y < minY) {
-                    minY = vertices[i].y;
-                }
+        //Finding the greatest and smallest points
+        for (int i = 1; i < roundedVertices.Length; i++) {
+            //Finding the biggest and smallest x points
+            if (roundedVertices[i].x > maxX){
+                maxX = roundedVertices[i].x;
+            }
+            else if (vertices[i].x < minX) {
+                minX = roundedVertices[i].x;
             }
 
-            //Transferring only the outer vertices to the new list
-            for (int i = 0; i < vertices.Count; i++) {
-                //Transferring the biggest and smallest x points
-                if (vertices[i].x == maxX)
-                {
-                    outerVertices.Add(vertices[i]);
-                    continue;
-                }
-                else if (vertices[i].x == minX)
-                {
-                    outerVertices.Add(vertices[i]);
-                    continue;
-                }
+            //Finding the biggest and smallest y points
+            if (roundedVertices[i].y > maxY){
+                maxY = roundedVertices[i].y;
+            }
+            else if (roundedVertices[i].y < minY) {
+                minY = roundedVertices[i].y;
+            }
+        }
 
-                //Transferring the biggest and smallest y points
-                if (vertices[i].y == maxY)
-                {
-                    outerVertices.Add(vertices[i]);
-                    continue;
-                }
-                else if (vertices[i].y == minY)
-                {
-                    outerVertices.Add(vertices[i]);
-                    continue;
-                }
+        //Transferring only the outer vertices to the new list
+        for (int i = 0; i < roundedVertices.Length; i++) {
+            //Transferring the biggest and smallest x points
+            if (roundedVertices[i].x == maxX){
+                outerVertices.Add(vertices[i]);
+                continue;
+            }
+            else if (roundedVertices[i].x == minX){
+                outerVertices.Add(vertices[i]);
+                continue;
             }
 
-            return outerVertices;
-        }*/
+            //Transferring the biggest and smallest y points
+            if (roundedVertices[i].y == maxY){
+                outerVertices.Add(vertices[i]);
+                continue;
+            }
+            else if (roundedVertices[i].y == minY){
+                outerVertices.Add(vertices[i]);
+                continue;
+            }
+        }
+
+        print("Max: " + maxX + " " + maxY);
+        print("Min: " + minX + " " + minY);
+
+        return outerVertices;
+    }
 
     void GenerateMesh(Vector3[] vertices) {
         Mesh mesh = new Mesh();
