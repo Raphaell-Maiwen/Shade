@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ShadowProjection : MonoBehaviour{
     public GameObject testMesh;
+    public Material mat;
     GameObject[] objectsToProject;
     Mesh mesh;
 
@@ -25,7 +26,7 @@ public class ShadowProjection : MonoBehaviour{
         //Only for testing purposes; once the extrusion works, UpdateShadows shouldn't be called on every frame
         for (int i = 0; i < objectsToProject.Length; i++)
         {
-            UpdateShadow(objectsToProject[i]);
+            //UpdateShadow(objectsToProject[i]);
         }
     }
 
@@ -59,8 +60,18 @@ public class ShadowProjection : MonoBehaviour{
         }
 
         triangles = TriangulateConvexPolygon(outerShadowVertices);
-        
-        GenerateMesh(outerShadowVertices.ToArray());
+
+        List<Vector3> buildingVertices = new List<Vector3>();
+        for (int i = 0; i < outerShadowVertices.Count; i++) {
+            buildingVertices.Add(outerShadowVertices[i].position);
+        }
+        for (int i = 0; i < outerShadowVertices.Count; i++) {
+            Vector3 newVertex = buildingVertices[i];
+            newVertex.z -= 1;
+            buildingVertices.Add(newVertex);
+        }
+
+        createBuildings(buildingVertices);
     }
 
     //Go through all the GameObjects from the scene and return only those that will get projected to the wall
@@ -284,6 +295,89 @@ public class ShadowProjection : MonoBehaviour{
         testMesh.GetComponent<MeshFilter>().mesh.vertices = testVertices;
         testMesh.GetComponent<MeshFilter>().mesh.triangles = triangles;
         testMesh.GetComponent<MeshFilter>().mesh.RecalculateNormals();
+    }
+
+    ///////////////////////////////////////////////////////////
+
+    void createBuildings(List<Vector3> buildingVertices) {
+        Debug.Log(buildingVertices.Count);
+
+        float height = buildingVertices[1].y;
+        // Compute the center point of the polygon both on the ground, and at height
+        // Add center vertices to end of list
+        Vector3 center = findCenter(buildingVertices);
+        buildingVertices.Add(center);
+        Vector3 raisedCenter = center;
+        raisedCenter.y += height;
+        buildingVertices.Add(raisedCenter);
+
+        List<int> tris = new List<int>();
+        // Convert vertices to array for mesh
+        Vector3[] vertices = buildingVertices.ToArray();
+
+        // Do the triangles for the roof and the floor of the building
+        // Roof points are at odd indeces
+        for (int j = vertices.Length - 3; j >= 0; j--) {
+            // Add the point
+            tris.Add(j);
+            // Check for wrap around
+            if (j - 2 >= 0) {
+                tris.Add(j - 2);
+            }
+            else {
+                // If wrap around, add the first vertex
+                int diff = j - 2;
+                tris.Add(vertices.Length - 2 + diff);
+            }
+            // Check if its at ground or building height level, choose proper center point
+            if (j % 2 == 0) {
+                tris.Add(vertices.Length - 2);
+            }
+            else {
+                tris.Add(vertices.Length - 1);
+            }
+        }
+
+        // Do triangles which connect roof to ground
+        for (int j = vertices.Length - 3; j >= 2; j--) {
+            if (j % 2 == 1) {
+                tris.Add(j);
+                tris.Add(j - 1);
+                tris.Add(j - 2);
+            }
+            else {
+                tris.Add(j);
+                tris.Add(j - 2);
+                tris.Add(j - 1);
+            }
+        }
+
+        int[] triangles = tris.ToArray();
+
+        // Create and apply the mesh
+        MeshFilter mf = testMesh.GetComponent<MeshFilter>();
+        Mesh mesh = new Mesh();
+        mf.mesh = mesh;
+        Renderer rend = testMesh.GetComponent<MeshRenderer>();
+        rend.material = mat;
+        mesh.vertices = vertices;
+        mesh.triangles = triangles;
+        mesh.RecalculateBounds();
+        mesh.RecalculateNormals();
+
+        Destroy(testMesh.GetComponent<MeshCollider>());
+        testMesh.AddComponent<MeshCollider>();
+    }
+
+    // Find the center X-Z position of the polygon.
+    Vector3 findCenter(List<Vector3> verts) {
+        Vector3 center = Vector3.zero;
+        // Only need to check every other spot since the odd indexed vertices are in the air, but have same XZ as previous
+        for (int i = 0; i < verts.Count; i += 2) {
+            center += verts[i];
+        }
+        return center / (verts.Count / 2);
+
     }
 
     //////////////////////////////////////////////////////////////
