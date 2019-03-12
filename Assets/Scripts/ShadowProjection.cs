@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class ShadowProjection : MonoBehaviour{
     public GameObject testMesh;
-    public Material mat;
     GameObject[] objectsToProject;
     Mesh mesh;
 
@@ -16,7 +15,6 @@ public class ShadowProjection : MonoBehaviour{
         }
         mesh = new Mesh();
         
-        print("mesh " + mesh.name);
         testMesh.GetComponent<MeshFilter>().mesh = mesh;
         mesh.Clear();
     }
@@ -271,16 +269,14 @@ public class ShadowProjection : MonoBehaviour{
     ///////////////////////////////////////////////////////////
 
     void createBuildings(List<Vector3> buildingVertices) {
-        Debug.Log(buildingVertices.Count);
-
         float height = buildingVertices[1].y;
         // Compute the center point of the polygon both on the ground, and at height
         // Add center vertices to end of list
         Vector3 center = findCenter(buildingVertices);
-        buildingVertices.Add(center);
+        //buildingVertices.Add(center);
         Vector3 raisedCenter = center;
         raisedCenter.y += height;
-        buildingVertices.Add(raisedCenter);
+        //buildingVertices.Add(raisedCenter);
 
         List<int> tris = new List<int>();
         // Convert vertices to array for mesh
@@ -329,8 +325,8 @@ public class ShadowProjection : MonoBehaviour{
         MeshFilter mf = testMesh.GetComponent<MeshFilter>();
         Mesh mesh = new Mesh();
         mf.mesh = mesh;
-        Renderer rend = testMesh.GetComponent<MeshRenderer>();
-        rend.material = mat;
+        testMesh.GetComponent<MeshRenderer>().enabled = false;
+
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.RecalculateBounds();
