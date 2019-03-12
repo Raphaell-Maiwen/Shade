@@ -24,9 +24,15 @@ public class ShadowProjection : MonoBehaviour{
     private void Update()
     {
         //Only for testing purposes; once the extrusion works, UpdateShadows shouldn't be called on every frame
-        for (int i = 0; i < objectsToProject.Length; i++)
+        /*for (int i = 0; i < objectsToProject.Length; i++)
         {
-            //UpdateShadow(objectsToProject[i]);
+            UpdateShadow(objectsToProject[i]);
+        }*/
+
+        if (Input.GetKeyDown(KeyCode.H)) {
+            for (int i = 0; i < objectsToProject.Length; i++) {
+                UpdateShadow(objectsToProject[i]);
+            }
         }
     }
 
@@ -58,8 +64,6 @@ public class ShadowProjection : MonoBehaviour{
                 Debug.DrawRay(transform.position, Vector3.Normalize((outerShadowVertices[i].position - transform.position)) * hit.distance, Color.red);
             }
         }
-
-        triangles = TriangulateConvexPolygon(outerShadowVertices);
 
         List<Vector3> buildingVertices = new List<Vector3>();
         for (int i = 0; i < outerShadowVertices.Count; i++) {
@@ -258,43 +262,10 @@ public class ShadowProjection : MonoBehaviour{
         return convexHull;
     }
 
-    public static List<Triangle> TriangulateConvexPolygon(List<Vertex> convexHullpoints) {
-        List<Triangle> triangles = new List<Triangle>();
-
-        for (int i = 2; i < convexHullpoints.Count; i++) {
-            Vertex a = convexHullpoints[0];
-            Vertex b = convexHullpoints[i - 1];
-            Vertex c = convexHullpoints[i];
-
-            triangles.Add(new Triangle(a, b, c));
-        }
-
-        return triangles;
-    }
-
     static float IsAPointLeftOfVectorOrOnTheLine(Vector2 a, Vector2 b, Vector2 p) {
         float determinant = (a.x - p.x) * (b.y - p.y) - (a.y - p.y) * (b.x - p.x);
 
         return determinant;
-    }
-
-    void GenerateMesh(Vertex[] vertices) {
-        //testMesh.GetComponent<MeshFilter>().mesh.Clear();
-        //mesh.Clear();
-        Vector3[] testVertices = new Vector3[] {
-            vertices[0].position,
-            vertices[1].position,
-            vertices[2].position
-        };
-
-        int[] triangles = new int[] {
-            0,1,2
-        };
-
-
-        testMesh.GetComponent<MeshFilter>().mesh.vertices = testVertices;
-        testMesh.GetComponent<MeshFilter>().mesh.triangles = triangles;
-        testMesh.GetComponent<MeshFilter>().mesh.RecalculateNormals();
     }
 
     ///////////////////////////////////////////////////////////
