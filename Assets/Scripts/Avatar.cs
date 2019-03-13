@@ -9,13 +9,19 @@ public class Avatar : MonoBehaviour {
     private bool readyToRotate = false;
     public GameObject objectToRotate;
 
+    Rigidbody rb;
+
+    void Awake() {
+        rb = GetComponent<Rigidbody>();
+    }
+
     // Update is called once per frame
     void Update(){
         transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * speed * Time.deltaTime);
         transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * speed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.Space)){
-            GetComponent<Rigidbody>().velocity = jumpVelocity * Vector3.up;
+        if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.y == 0f){
+            rb.velocity = jumpVelocity * Vector3.up;
         }
         else if (readyToRotate) {
             if (Input.GetKeyDown(KeyCode.R)){

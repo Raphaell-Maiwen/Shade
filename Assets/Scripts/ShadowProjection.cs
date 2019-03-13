@@ -19,8 +19,7 @@ public class ShadowProjection : MonoBehaviour{
         mesh.Clear();
     }
 
-    private void Update()
-    {
+    private void Update(){
         //Only for testing purposes; once the extrusion works, UpdateShadows shouldn't be called on every frame
         /*for (int i = 0; i < objectsToProject.Length; i++)
         {
@@ -45,34 +44,28 @@ public class ShadowProjection : MonoBehaviour{
         int layerMask = LayerMask.GetMask("Wall");
 
         for (int i = 0; i < meshVertices.Length; i++) {
-            if (Physics.Raycast(transform.position, Vector3.Normalize(meshVertices[i] - transform.position), out hit, 50, layerMask))
-            {
+            if (Physics.Raycast(transform.position, Vector3.Normalize(meshVertices[i] - transform.position), out hit, 50, layerMask)){
                 shadowVertices.Add(hit.point);
             }
         }
 
-        //Why not just calling GetConvexHull and store the returned value in shadowVertices?
-        List<Vector3> outerShadowVertices = new List<Vector3>();
-        outerShadowVertices = GetConvexHull(shadowVertices);
+        shadowVertices = GetConvexHull(shadowVertices);
 
         //For testing purposes
-        for (int i = 0; i < outerShadowVertices.Count; i++) {
-            if (Physics.Raycast(transform.position, Vector3.Normalize(outerShadowVertices[i] - transform.position), out hit, 50, layerMask)) {
-                Debug.DrawRay(transform.position, Vector3.Normalize((outerShadowVertices[i] - transform.position)) * hit.distance, Color.red);
+        for (int i = 0; i < shadowVertices.Count; i++) {
+            if (Physics.Raycast(transform.position, Vector3.Normalize(shadowVertices[i] - transform.position), out hit, 50, layerMask)) {
+                Debug.DrawRay(transform.position, Vector3.Normalize((shadowVertices[i] - transform.position)) * hit.distance, Color.red);
             }
         }
 
-        List<Vector3> buildingVertices = new List<Vector3>();
-        for (int i = 0; i < outerShadowVertices.Count; i++) {
-            buildingVertices.Add(outerShadowVertices[i]);
-        }
-        for (int i = 0; i < outerShadowVertices.Count; i++) {
-            Vector3 newVertex = buildingVertices[i];
+        int shadowVerticesCount = shadowVertices.Count;
+        for (int i = 0; i < shadowVerticesCount; i++) {
+            Vector3 newVertex = shadowVertices[i];
             newVertex.z -= 1;
-            buildingVertices.Add(newVertex);
+            shadowVertices.Add(newVertex);
         }
 
-        createBuildings(buildingVertices);
+        GenerateMesh(shadowVertices);
     }
 
     //Go through all the GameObjects from the scene and return only those that will get projected to the wall
@@ -96,8 +89,7 @@ public class ShadowProjection : MonoBehaviour{
         GO.GetComponent<MeshFilter>().mesh.GetVertices(MeshVertices);
 
         int i = 0;
-        foreach(Vector3 vertex in MeshVertices)
-        {
+        foreach(Vector3 vertex in MeshVertices){
             vertices.Add(GO.transform.TransformPoint(vertex));
         }
 
@@ -217,8 +209,6 @@ public class ShadowProjection : MonoBehaviour{
                 //To the left = worse point so do nothing
             }
 
-
-
             //If we have colinear points
             if (colinearPoints.Count > 0) {
                 colinearPoints.Add(nextPoint);
@@ -267,21 +257,21 @@ public class ShadowProjection : MonoBehaviour{
 
     ///////////////////////////////////////////////////////////
 
-    void createBuildings(List<Vector3> buildingVertices) {
-        float height = buildingVertices[1].y;
+    void GenerateMesh(List<Vector3> shadowVertices){
+        float height = shadowVertices[1].y;
         // Compute the center point of the polygon both on the ground, and at height
         // Add center vertices to end of list
-        Vector3 center = findCenter(buildingVertices);
-        //buildingVertices.Add(center);
+        Vector3 center = findCenter(shadowVertices);
+        //shadowVertices.Add(center);
         Vector3 raisedCenter = center;
         raisedCenter.y += height;
-        //buildingVertices.Add(raisedCenter);
+        //shadowVertices.Add(raisedCenter);
 
         List<int> tris = new List<int>();
         // Convert vertices to array for mesh
-        Vector3[] vertices = buildingVertices.ToArray();
+        Vector3[] vertices = shadowVertices.ToArray();
 
-        // Do the triangles for the roof and the floor of the building
+        // Do the triangles for the roof and the floor of the mesh
         // Roof points are at odd indeces
         for (int j = vertices.Length - 3; j >= 0; j--) {
             // Add the point
@@ -295,7 +285,7 @@ public class ShadowProjection : MonoBehaviour{
                 int diff = j - 2;
                 tris.Add(vertices.Length - 2 + diff);
             }
-            // Check if its at ground or building height level, choose proper center point
+            // Check if its at ground or mesh height level, choose proper center point
             if (j % 2 == 0) {
                 tris.Add(vertices.Length - 2);
             }
