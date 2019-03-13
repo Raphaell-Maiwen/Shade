@@ -38,8 +38,7 @@ public class ShadowProjection : MonoBehaviour{
         Vector3[] meshVerticesWithDuplicates = GetVertices(objectToUpdate.transform.position, objectToUpdate.transform.lossyScale, objectToUpdate);
         Vector3[] meshVertices = RemoveDuplicates(meshVerticesWithDuplicates);
 
-        List<Vertex> shadowVertices = new List<Vertex>();
-        List<Triangle> triangles = new List<Triangle>();
+        List<Vector3> shadowVertices = new List<Vector3>();
 
         RaycastHit hit;
         
@@ -48,24 +47,24 @@ public class ShadowProjection : MonoBehaviour{
         for (int i = 0; i < meshVertices.Length; i++) {
             if (Physics.Raycast(transform.position, Vector3.Normalize(meshVertices[i] - transform.position), out hit, 50, layerMask))
             {
-                shadowVertices.Add(new Vertex(hit.point));
+                shadowVertices.Add(hit.point);
             }
         }
 
         //Why not just calling GetConvexHull and store the returned value in shadowVertices?
-        List<Vertex> outerShadowVertices = new List<Vertex>();
+        List<Vector3> outerShadowVertices = new List<Vector3>();
         outerShadowVertices = GetConvexHull(shadowVertices);
 
         //For testing purposes
         for (int i = 0; i < outerShadowVertices.Count; i++) {
-            if (Physics.Raycast(transform.position, Vector3.Normalize(outerShadowVertices[i].position - transform.position), out hit, 50, layerMask)) {
-                Debug.DrawRay(transform.position, Vector3.Normalize((outerShadowVertices[i].position - transform.position)) * hit.distance, Color.red);
+            if (Physics.Raycast(transform.position, Vector3.Normalize(outerShadowVertices[i] - transform.position), out hit, 50, layerMask)) {
+                Debug.DrawRay(transform.position, Vector3.Normalize((outerShadowVertices[i] - transform.position)) * hit.distance, Color.red);
             }
         }
 
         List<Vector3> buildingVertices = new List<Vector3>();
         for (int i = 0; i < outerShadowVertices.Count; i++) {
-            buildingVertices.Add(outerShadowVertices[i].position);
+            buildingVertices.Add(outerShadowVertices[i]);
         }
         for (int i = 0; i < outerShadowVertices.Count; i++) {
             Vector3 newVertex = buildingVertices[i];
@@ -134,24 +133,24 @@ public class ShadowProjection : MonoBehaviour{
         return point; // return it
     }
 
-    public static List<Vertex> GetConvexHull(List<Vertex> points) {
+    public static List<Vector3> GetConvexHull(List<Vector3> points) {
         //The list with points on the convex hull
-        List<Vertex> convexHull = new List<Vertex>();
+        List<Vector3> convexHull = new List<Vector3>();
 
         //Find the vertex with the smallest x coordinate
         //If several have the same x coordinate, find the one with the smallest y
-        Vertex startVertex = points[0];
+        Vector3 startVertex = points[0];
 
-        Vector3 startPos = startVertex.position;
+        Vector3 startPos = startVertex;
 
         for (int i = 1; i < points.Count; i++) {
-            Vector3 testPos = points[i].position;
+            Vector3 testPos = points[i];
 
             //Because of precision issues, we use Mathf.Approximately to test if the x positions are the same
             if (testPos.x < startPos.x || (Mathf.Approximately(testPos.x, startPos.x) && testPos.y < startPos.y)) {
                 startVertex = points[i];
 
-                startPos = startVertex.position;
+                startPos = startVertex;
             }
         }
 
@@ -160,10 +159,10 @@ public class ShadowProjection : MonoBehaviour{
         points.Remove(startVertex);
 
 
-        Vertex currentPoint = convexHull[0];
+        Vector3 currentPoint = convexHull[0];
 
         //Store colinear points here - better to create this list once than each loop
-        List<Vertex> colinearPoints = new List<Vertex>();
+        List<Vector3> colinearPoints = new List<Vector3>();
 
         int counter = 0;
 
@@ -176,12 +175,12 @@ public class ShadowProjection : MonoBehaviour{
             }
 
             //Pick next point randomly
-            Vertex nextPoint = points[Random.Range(0, points.Count)];
+            Vector3 nextPoint = points[Random.Range(0, points.Count)];
 
             //To 2d space so we can see if a point is to the left is the vector ab
-            Vector2 a = currentPoint.GetPos2D_XY();
+            Vector2 a = currentPoint;
 
-            Vector2 b = nextPoint.GetPos2D_XY();
+            Vector2 b = nextPoint;
 
             //Test if there's a point to the right of ab, if so then it's the new b
             for (int i = 0; i < points.Count; i++) {
@@ -190,7 +189,7 @@ public class ShadowProjection : MonoBehaviour{
                     continue;
                 }
 
-                Vector2 c = points[i].GetPos2D_XY();
+                Vector2 c = points[i];
 
                 //Where is c in relation to a-b
                 // < 0 -> to the right
@@ -210,7 +209,7 @@ public class ShadowProjection : MonoBehaviour{
                 else if (relation < 0f) {
                     nextPoint = points[i];
 
-                    b = nextPoint.GetPos2D_XY();
+                    b = nextPoint;
 
                     //Clear colinear points
                     colinearPoints.Clear();
@@ -225,7 +224,7 @@ public class ShadowProjection : MonoBehaviour{
                 colinearPoints.Add(nextPoint);
 
                 //Sort this list, so we can add the colinear points in correct order
-                colinearPoints = colinearPoints.OrderBy(n => Vector3.SqrMagnitude(n.position - currentPoint.position)).ToList();
+                colinearPoints = colinearPoints.OrderBy(n => Vector3.SqrMagnitude(n - currentPoint)).ToList();
 
                 convexHull.AddRange(colinearPoints);
 
@@ -345,97 +344,5 @@ public class ShadowProjection : MonoBehaviour{
         }
         return center / (verts.Count / 2);
 
-    }
-
-    //////////////////////////////////////////////////////////////
-
-    //Geometrical data structures
-
-    public class Vertex {
-        public Vector3 position;
-
-        //The outgoing halfedge (a halfedge that starts at this vertex)
-        //Doesnt matter which edge we connect to it
-        public HalfEdge halfEdge;
-
-        //Which triangle is this vertex a part of?
-        public Triangle triangle;
-
-        //The previous and next vertex this vertex is attached to
-        public Vertex prevVertex;
-        public Vertex nextVertex;
-
-        //Properties this vertex may have
-        //Reflex is concave
-        public bool isReflex;
-        public bool isConvex;
-        public bool isEar;
-
-        public Vertex(Vector3 position) {
-            this.position = position;
-        }
-
-        //Get 2d pos of this vertex
-        public Vector2 GetPos2D_XY() {
-            Vector2 pos_2d_xy = new Vector2(position.x, position.y);
-
-            return pos_2d_xy;
-        }
-    }
-
-    public class HalfEdge {
-        //The vertex the edge points to
-        public Vertex v;
-
-        //The face this edge is a part of
-        public Triangle t;
-
-        //The next edge
-        public HalfEdge nextEdge;
-        //The previous
-        public HalfEdge prevEdge;
-        //The edge going in the opposite direction
-        public HalfEdge oppositeEdge;
-
-        //This structure assumes we have a vertex class with a reference to a half edge going from that vertex
-        //and a face (triangle) class with a reference to a half edge which is a part of this face 
-        public HalfEdge(Vertex v) {
-            this.v = v;
-        }
-    }
-
-    public class Triangle {
-        //Corners
-        public Vertex v1;
-        public Vertex v2;
-        public Vertex v3;
-
-        //If we are using the half edge mesh structure, we just need one half edge
-        public HalfEdge halfEdge;
-
-        public Triangle(Vertex v1, Vertex v2, Vertex v3) {
-            this.v1 = v1;
-            this.v2 = v2;
-            this.v3 = v3;
-        }
-
-        public Triangle(Vector3 v1, Vector3 v2, Vector3 v3) {
-            this.v1 = new Vertex(v1);
-            this.v2 = new Vertex(v2);
-            this.v3 = new Vertex(v3);
-        }
-
-        public Triangle(HalfEdge halfEdge) {
-            this.halfEdge = halfEdge;
-        }
-
-        //Change orientation of triangle from cw -> ccw or ccw -> cw
-        public void ChangeOrientation() {
-            Vertex temp = this.v1;
-
-            this.v1 = this.v2;
-
-            this.v2 = temp;
-        }
     }
 }
