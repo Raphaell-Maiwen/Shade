@@ -4,19 +4,17 @@ using System.Linq;
 using UnityEngine;
 
 public class ShadowProjection : MonoBehaviour{
-    public GameObject testMesh;
     GameObject[] objectsToProject;
-    Mesh mesh;
+
+    //The real world object as the key, the shadow object as the value
+    Dictionary<GameObject, GameObject> shadowObjects = new Dictionary<GameObject,GameObject>();
 
     void Start(){
         objectsToProject = GetRelevantRealObjects();
+        //shadowObjects = new GameObject[objectsToProject.Length];
         for (int i = 0; i < objectsToProject.Length; i++) {
             UpdateShadow(objectsToProject[i]);
         }
-        mesh = new Mesh();
-        
-        testMesh.GetComponent<MeshFilter>().mesh = mesh;
-        mesh.Clear();
     }
 
     private void Update(){
@@ -65,7 +63,7 @@ public class ShadowProjection : MonoBehaviour{
             shadowVertices.Add(newVertex);
         }
 
-        GenerateMesh(shadowVertices);
+        GenerateMesh(objectToUpdate, shadowVertices);
     }
 
     //Go through all the GameObjects from the scene and return only those that will get projected to the wall
@@ -257,7 +255,7 @@ public class ShadowProjection : MonoBehaviour{
 
     ///////////////////////////////////////////////////////////
 
-    void GenerateMesh(List<Vector3> shadowVertices){
+    void GenerateMesh(GameObject realWorldObject, List<Vector3> shadowVertices){
         float height = shadowVertices[1].y;
         // Compute the center point of the polygon both on the ground, and at height
         // Add center vertices to end of list
@@ -310,19 +308,34 @@ public class ShadowProjection : MonoBehaviour{
 
         int[] triangles = tris.ToArray();
 
+        //Find which GameObject to apply the new mesh to
+        //If it doesn't exist, create it
+        GameObject shadowObject;
+        if (shadowObjects.ContainsKey(realWorldObject)) {
+            shadowObject = shadowObjects[realWorldObject];
+        }
+        else {
+            shadowObject = new GameObject();
+            shadowObject.AddComponent<MeshFilter>();
+            shadowObject.AddComponent<MeshRenderer>();
+            shadowObjects.Add(realWorldObject, shadowObject);
+        }
+
+
         // Create and apply the mesh
-        MeshFilter mf = testMesh.GetComponent<MeshFilter>();
+        Destroy(shadowObject.GetComponent<MeshCollider>());
+
+        MeshFilter mf = shadowObject.GetComponent<MeshFilter>();
         Mesh mesh = new Mesh();
         mf.mesh = mesh;
-        testMesh.GetComponent<MeshRenderer>().enabled = false;
+        shadowObject.GetComponent<MeshRenderer>().enabled = false;
 
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
 
-        Destroy(testMesh.GetComponent<MeshCollider>());
-        testMesh.AddComponent<MeshCollider>();
+        shadowObject.AddComponent<MeshCollider>();
     }
 
     // Find the center X-Z position of the polygon.
