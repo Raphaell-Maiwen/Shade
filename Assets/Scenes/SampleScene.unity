@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 130034566}
   m_Layer: 12
   m_Name: Avatar
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -945,7 +945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &935092845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1579,6 +1579,7 @@ MonoBehaviour:
   shadowCharacterScript: {fileID: 651023207}
   mainCamera: {fileID: 534669902}
   platformingCamera: {fileID: 1573307733}
+  realWorldObjects: []
 --- !u!4 &1951231422
 Transform:
   m_ObjectHideFlags: 0

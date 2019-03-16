@@ -52,7 +52,7 @@ public class ShadowProjection : MonoBehaviour{
         //For testing purposes
         for (int i = 0; i < shadowVertices.Count; i++) {
             if (Physics.Raycast(transform.position, Vector3.Normalize(shadowVertices[i] - transform.position), out hit, 50, layerMask)) {
-                Debug.DrawRay(transform.position, Vector3.Normalize((shadowVertices[i] - transform.position)) * hit.distance, Color.red);
+                Debug.DrawRay(transform.position, Vector3.Normalize((shadowVertices[i] - transform.position)) * hit.distance, Color.red, 1f);
             }
         }
 
