@@ -4,10 +4,26 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
+    ShadowProjection[] projectionScripts;
     bool isRotating = false;
 
     [SerializeField]
     private float rotatingTime = 1f;
+
+    private void Awake() {
+        projectionScripts = (ShadowProjection[])FindObjectsOfType(typeof(ShadowProjection));
+        transform.hasChanged = false;
+    }
+
+    void Update() {
+        if (transform.hasChanged) {
+            foreach (ShadowProjection script in projectionScripts) {
+                print("It's updating");
+                script.UpdateShadow(this.gameObject);
+                transform.hasChanged = false;
+            }
+        }
+    }
 
     public void RotateClockwise() {
         if (!isRotating) {
