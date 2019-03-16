@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 130034564}
   - component: {fileID: 130034558}
   - component: {fileID: 130034566}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Avatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,11 +394,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179141898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.99, y: -1.08, z: -0.22}
+  m_LocalPosition: {x: -0.99, y: -1.08, z: 3.37}
   m_LocalScale: {x: 0.38609, y: 0.7598, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &319724386
 GameObject:
@@ -768,7 +768,7 @@ GameObject:
   - component: {fileID: 651023203}
   - component: {fileID: 651023207}
   - component: {fileID: 651023208}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ShadowBuddy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1041,7 +1041,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935092844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.79, y: -0.42, z: 2.188271}
+  m_LocalPosition: {x: 4.79, y: -0.42, z: 5.7782707}
   m_LocalScale: {x: 1.2692398, y: 2.078661, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1163,7 +1163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027978818}
   m_LocalRotation: {x: -0, y: -0, z: -0.5796983, w: 0.81483126}
-  m_LocalPosition: {x: 1.4, y: -0.88, z: -0.22000003}
+  m_LocalPosition: {x: 1.4, y: -0.88, z: 3.37}
   m_LocalScale: {x: 0.38609, y: 2.1509178, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1450,7 +1450,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1717272218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.58, y: -1.08, z: -0.22000003}
+  m_LocalPosition: {x: 3.58, y: -1.08, z: 3.37}
   m_LocalScale: {x: 0.38609, y: 0.7598, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1558,7 +1558,7 @@ GameObject:
   - component: {fileID: 1817381218}
   - component: {fileID: 1817381217}
   - component: {fileID: 1817381216}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TestMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1622,7 +1622,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1951231420
 GameObject:

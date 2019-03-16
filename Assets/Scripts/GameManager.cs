@@ -12,7 +12,11 @@ public class GameManager : MonoBehaviour {
 	void Awake () {
         avatarScript.enabled = true;
         shadowCharacterScript.enabled = false;
-	}
+
+        //The real world objects and player are not rendered while in platforming mode
+        platformingCamera.GetComponent<Camera>().cullingMask &= ~(1 << LayerMask.NameToLayer("RealWorldObjects"));
+        platformingCamera.GetComponent<Camera>().cullingMask &= ~(1 << LayerMask.NameToLayer("RealWorldPlayer"));
+    }
 	
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Tab)) {
