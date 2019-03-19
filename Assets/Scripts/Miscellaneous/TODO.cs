@@ -4,11 +4,32 @@ using UnityEngine;
 
 public class TODO : MonoBehaviour {
     /*
-     -Make a proper TODO list
-     -Git (gud)
-     -LE tuto: https://unity3d.com/learn/tutorials/s/procedural-cave-generation-tutorial
-     -Make a Character class. Avatar and ShadowCharacter will inherit from it (since there is so many resemblances)
+     -Adjust the metrics for Shade
+     -Questions to answer:
+        -How will Elliot push/pull blocks? (pick up and snap / can stack objects / always pick up the one from the top)
+        -How will the objects rotate? (pre-determined positions)
+        -Do we have ways to make the objects bigger or smaller? (Otherwise, just getting them closer or farther from the wall changes their shadow size)
+            No
 
-    http://wiki.unity3d.com/index.php/Triangulator
+        -How long will we make the scenes? Do we have small scenes with level transitions, or ongoing levels with a moving camera?
+        -Do we have wall jumps? Or any extra platforming mechanics (including platforms/ obstacles)
+            something time-based (like a toaster)
+            have hostile platforms (+checkpoints?)
+            swinging
+
+    -Ideas:
+        -Just have a straightforward path at the beginning, with one block to place right
+        -
+        -When the flashlight is introduced, it is stationary (as to show the mechanic without giving too much affordability, a bit like in Portal)
+     -
+     -
+     -
+     -
+     -
+     -
+     -
+
+
+     -Make a Character class. Avatar and ShadowCharacter will inherit from it (since there is so many resemblances)
      */
 }
