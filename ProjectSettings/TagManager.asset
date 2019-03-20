@@ -14,11 +14,11 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - RealWorld
+  - RealWorldObjects
   - Wall
-  - 
-  - 
-  - 
+  - ShadowObjects
+  - RealWorldPlayer
+  - ShadowPlayer
   - 
   - 
   - 
