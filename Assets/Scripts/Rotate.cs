@@ -35,13 +35,6 @@ public class Rotate : MonoBehaviour
         }
     }
 
-    public void RotateAntiClockwise() {
-        if (!isRotating){
-            isRotating = true;
-            StartCoroutine(Rotation(transform, GetVector(), rotatingTime));
-        }
-    }
-
     Quaternion GetVector() {
         Quaternion vector = Quaternion.identity;
         //For gyms/ objects where the rotation is not implemented
