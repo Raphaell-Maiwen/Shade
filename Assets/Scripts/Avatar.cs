@@ -24,7 +24,7 @@ public class Avatar : MonoBehaviour {
     void Awake() {
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
-        animator.SetBool("Elliot_IDLE", true);
+        //animator.SetBool("Elliot_IDLE", true);
     }
 
     // Update is called once per frame
@@ -34,8 +34,8 @@ public class Avatar : MonoBehaviour {
 
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) {
             //Jonna : This is where the walking animation plays
-            animator.SetBool("Elliot_IDLE", false);
-            animator.SetBool("Elliot_WALK", true);
+            //animator.SetBool("Elliot_IDLE", false);
+            //animator.SetBool("Elliot_WALK", true);
             print("Bouge");
         }
         else {
@@ -61,7 +61,7 @@ public class Avatar : MonoBehaviour {
 
                 objectToBePlacedOn = null;
                 readyToPlace = false;
-                animator.SetBool("Elliot_CARRY", true);
+                //animator.SetBool("Elliot_CARRY", true);
                 //Jonna : this is where the carrying animation starts
             }
             else {
