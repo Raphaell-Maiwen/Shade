@@ -19,8 +19,12 @@ public class Avatar : MonoBehaviour {
 
     Rigidbody rb;
 
+    public Animator animator;
+
     void Awake() {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
+        animator.SetBool("Elliot_IDLE", true);
     }
 
     // Update is called once per frame
@@ -28,10 +32,17 @@ public class Avatar : MonoBehaviour {
         transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * speed * Time.deltaTime);
         transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * speed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.y == 0f) {
-            rb.velocity = jumpVelocity * Vector3.up;
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) {
+            //Jonna : This is where the walking animation plays
+            animator.SetBool("Elliot_IDLE", false);
+            animator.SetBool("Elliot_WALK", true);
+            print("Bouge");
         }
-        else if (readyToRotate) {
+        else {
+            //Jonna : this is where the walking animation stops / idle starts
+        }
+
+        if (readyToRotate) {
             if (Input.GetKeyDown(KeyCode.R)) {
                 objectToRotate.GetComponent<Rotate>().RotateClockwise();
             }
@@ -50,8 +61,11 @@ public class Avatar : MonoBehaviour {
 
                 objectToBePlacedOn = null;
                 readyToPlace = false;
+                animator.SetBool("Elliot_CARRY", true);
+                //Jonna : this is where the carrying animation starts
             }
             else {
+                //Jonna : this is where the carrying animation stops
                 isHolding = false;
                 PlaceObject();
             }
@@ -78,7 +92,6 @@ public class Avatar : MonoBehaviour {
         
         //if (!readyToRotate && other.gameObject.tag == "RealWorld") {
         if (otherGO.GetComponent<Rotate>() != null && otherGO.GetComponent<Rotate>().rotationCycle.Length > 0) {
-            print("Ready to rotate");
             objectToRotate = otherGO;
             readyToRotate = true;
         }
