@@ -46,6 +46,8 @@ public class Avatar : MonoBehaviour {
                 readyToHold = false;
                 isHolding = true;
 
+                objectToHold.GetComponent<Rigidbody>().useGravity = false;
+
                 objectToBePlacedOn = null;
                 readyToPlace = false;
             }
@@ -67,6 +69,8 @@ public class Avatar : MonoBehaviour {
         else {
             objectToHold.transform.SetParent(null);
         }
+
+        objectToHold.GetComponent<Rigidbody>().useGravity = true;
     }
 
     private void OnTriggerEnter(Collider other){
