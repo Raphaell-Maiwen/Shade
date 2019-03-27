@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 966420585716898454}
   - component: {fileID: 966420585716898455}
   - component: {fileID: 966420585716898452}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Lamp_Standing
   m_TagString: Surface
   m_Icon: {fileID: 0}
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingTime: 1
+  rotationCycle: 
 --- !u!54 &966420585716898452
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -80,7 +81,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &966420586846185428
 Transform:
   m_ObjectHideFlags: 0
@@ -120,7 +121,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6577ee8666a12ee4fb4665425f5ff351, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
