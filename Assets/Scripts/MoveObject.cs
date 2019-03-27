@@ -7,4 +7,7 @@ public class MoveObject : MonoBehaviour
     public bool canBeHeld;
     public bool isASurface;
     public bool canBeStacked;
+
+    [HideInInspector]
+    public bool hasAnObjectOn = false;
 }

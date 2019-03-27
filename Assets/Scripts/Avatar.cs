@@ -38,9 +38,16 @@ public class Avatar : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.E)) {
             if (readyToHold) {
+                if (objectToHold.transform.parent != null) {
+                    objectToHold.GetComponentInParent<MoveObject>().hasAnObjectOn = false;
+                }
+
                 objectToHold.transform.SetParent(this.transform);
                 readyToHold = false;
                 isHolding = true;
+
+                objectToBePlacedOn = null;
+                readyToPlace = false;
             }
             else {
                 isHolding = false;
@@ -53,6 +60,9 @@ public class Avatar : MonoBehaviour {
         if (readyToPlace && objectToHold.GetComponent<MoveObject>().canBeStacked) {
             objectToHold.transform.position = newObjectPos;
             objectToHold.transform.SetParent(objectToBePlacedOn.transform);
+            readyToPlace = false;
+
+            objectToBePlacedOn.GetComponentInParent<MoveObject>().hasAnObjectOn = true;
         }
         else {
             objectToHold.transform.SetParent(null);
@@ -70,13 +80,15 @@ public class Avatar : MonoBehaviour {
         }
         //}
 
-        if (otherGO.GetComponent<MoveObject>() != null) {
-            if (!isHolding && otherGO.GetComponent<MoveObject>().canBeHeld) {
+        MoveObject moveObjectScript = otherGO.GetComponent<MoveObject>();
+
+        if (moveObjectScript != null) {
+            if (!isHolding && moveObjectScript.canBeHeld && !moveObjectScript.hasAnObjectOn) {
                 print("Ready to hold");
                 objectToHold = otherGO;
                 readyToHold = true;
             }
-            else if (otherGO.GetComponent<MoveObject>().isASurface) {
+            else if (moveObjectScript.isASurface) {
                 objectToBePlacedOn = otherGO;
                 readyToPlace = true;
                 newObjectPos = other.transform.position;
