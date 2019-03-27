@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 386431979212121430}
   - component: {fileID: 386431977604530619}
   - component: {fileID: 386431977604530616}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,9 +25,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386431977604530617}
-  m_LocalRotation: {x: -0, y: 0.47627434, z: -0, w: 0.8792968}
+  m_LocalRotation: {x: 0, y: 0.47627655, z: 0, w: 0.8792955}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.12295817, y: 0.122958004, z: 0.12295817}
+  m_LocalScale: {x: 0.33883202, y: 0.33883157, z: 0.33883202}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,7 +48,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386431977604530617}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 3
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9e64a36c452b6c2429c582b2ffd74f79, type: 2}
+  - {fileID: 2100000, guid: 7abdd9b260f7ed548b341b49c0284434, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

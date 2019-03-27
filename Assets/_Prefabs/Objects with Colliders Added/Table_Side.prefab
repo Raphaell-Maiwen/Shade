@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3299574180742632552}
   - component: {fileID: 6500913542554887673}
   - component: {fileID: 8579066074154004330}
-  m_Layer: 0
-  m_Name: Collider (3)
+  m_Layer: 9
+  m_Name: Coliider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 613647428966925435}
   m_Layer: 0
   m_Name: Surface Collider
-  m_TagString: Untagged
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,6 +198,7 @@ MonoBehaviour:
   canBeHeld: 0
   isASurface: 1
   canBeStacked: 0
+  hasAnObjectOn: 0
 --- !u!1 &6060763042184386937
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,8 +211,8 @@ GameObject:
   - component: {fileID: 5933989598741689646}
   - component: {fileID: 6635246505995899911}
   - component: {fileID: 3304927944347534704}
-  m_Layer: 0
-  m_Name: Collider (2)
+  m_Layer: 9
+  m_Name: Coliider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,7 +319,7 @@ Transform:
   m_LocalPosition: {x: 9.32, y: -2.035, z: -5.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7732138457236324894}
+  - {fileID: 7732138456959022494}
   - {fileID: 2946622798582918598}
   - {fileID: 1142078798710760842}
   - {fileID: 2420227126343916918}
@@ -339,7 +340,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 122
@@ -370,8 +371,8 @@ GameObject:
   - component: {fileID: 2113316276561001241}
   - component: {fileID: 2066962642557235016}
   - component: {fileID: 4537117341386442382}
-  m_Layer: 0
-  m_Name: Collider
+  m_Layer: 9
+  m_Name: Coliider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -461,8 +462,8 @@ GameObject:
   - component: {fileID: 1861921993139080409}
   - component: {fileID: 6269774191189730311}
   - component: {fileID: 3138607241075796368}
-  m_Layer: 0
-  m_Name: Collider (4)
+  m_Layer: 9
+  m_Name: Coliider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -567,9 +568,9 @@ Transform:
   m_GameObject: {fileID: 7732138456958790078}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2195188, y: 0.21951903, z: 0.21951903}
+  m_LocalScale: {x: 0.2560467, y: 0.25604713, z: 0.25604713}
   m_Children: []
-  m_Father: {fileID: 7732138457236324894}
+  m_Father: {fileID: 5165961998807811047}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7732138456957695422
@@ -597,7 +598,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6791a98da540c3841a85664291d9e46e, type: 2}
+  - {fileID: 2100000, guid: f6b0631c537be454cbd53b37834d6e90, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -617,37 +618,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &7732138457236324893
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7732138457236324894}
-  m_Layer: 9
-  m_Name: Table_Side
-  m_TagString: Both
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7732138457236324894
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7732138457236324893}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1664, y: 1.1664, z: 1.1664}
-  m_Children:
-  - {fileID: 7732138456959022494}
-  m_Father: {fileID: 5165961998807811047}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8214255020036114599
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,8 +630,8 @@ GameObject:
   - component: {fileID: 3659766846516942612}
   - component: {fileID: 4691846945264055928}
   - component: {fileID: 2898851982902669941}
-  m_Layer: 0
-  m_Name: Collider (1)
+  m_Layer: 9
+  m_Name: Coliider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

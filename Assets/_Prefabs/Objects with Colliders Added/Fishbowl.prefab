@@ -65,6 +65,7 @@ MonoBehaviour:
   canBeHeld: 1
   isASurface: 0
   canBeStacked: 0
+  hasAnObjectOn: 0
 --- !u!54 &5300945703044160863
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -106,8 +107,8 @@ GameObject:
   - component: {fileID: 1339938407491393190}
   - component: {fileID: 3301325675679388947}
   - component: {fileID: 3143978490685824115}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 9
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,6 +198,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fishbowl
       objectReference: {fileID: 0}
+    - target: {fileID: 3927689732098386916, guid: 4d7bbd2a9dc8828418d8b6d35ab9ad89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3927689732098386915, guid: 4d7bbd2a9dc8828418d8b6d35ab9ad89,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -252,16 +258,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3927689731505009301, guid: 4d7bbd2a9dc8828418d8b6d35ab9ad89,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 844059a47e3995346911e8625bad9774, type: 2}
     - target: {fileID: 3927689731505009303, guid: 4d7bbd2a9dc8828418d8b6d35ab9ad89,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9e64a36c452b6c2429c582b2ffd74f79, type: 2}
+    - target: {fileID: 3927689731505009301, guid: 4d7bbd2a9dc8828418d8b6d35ab9ad89,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 844059a47e3995346911e8625bad9774, type: 2}
     m_RemovedComponents:
     - {fileID: 3927689732098386913, guid: 4d7bbd2a9dc8828418d8b6d35ab9ad89, type: 3}
     - {fileID: 3927689732098386914, guid: 4d7bbd2a9dc8828418d8b6d35ab9ad89, type: 3}
