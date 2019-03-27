@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5401473187343768709}
   - component: {fileID: 1885122196937526406}
   - component: {fileID: 2243844841088222123}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 7039391834751882573}
   - component: {fileID: 9143845418291667619}
   - component: {fileID: 5765154611120818018}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider 2 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 6336467686148606634}
   - component: {fileID: 2266334081087803646}
   - component: {fileID: 9179097362931713399}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider 2 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 8384162505901413080}
   - component: {fileID: 2537505255754845393}
   - component: {fileID: 6392214431132257588}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider 2 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,6 +471,7 @@ MonoBehaviour:
   canBeHeld: 0
   isASurface: 1
   canBeStacked: 0
+  hasAnObjectOn: 0
 --- !u!1 &3324350571164798049
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +484,7 @@ GameObject:
   - component: {fileID: 7260577557376638508}
   - component: {fileID: 6269433351881372228}
   - component: {fileID: 6617665687414060105}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider 2 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +575,7 @@ GameObject:
   - component: {fileID: 8313443521267646706}
   - component: {fileID: 8383969010368208988}
   - component: {fileID: 536351319680821602}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider 2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -739,7 +740,7 @@ GameObject:
   - component: {fileID: 8431529496644881802}
   - component: {fileID: 5729128845819943592}
   - component: {fileID: 6633806413284738716}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider 2 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -830,7 +831,7 @@ GameObject:
   - component: {fileID: 3607570592630823618}
   - component: {fileID: 5006038407565393598}
   - component: {fileID: 2382681447380288269}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider 2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -921,7 +922,7 @@ GameObject:
   - component: {fileID: 6278960959396349598}
   - component: {fileID: 7057955123086103579}
   - component: {fileID: 9048133201682464111}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1012,7 +1013,7 @@ GameObject:
   - component: {fileID: 4078737313058641380}
   - component: {fileID: 8508924250618331455}
   - component: {fileID: 9081908604341179153}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider 2 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1158,9 +1159,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6746013677921401351, guid: 062fe8694a75665439629adf2379582f, type: 3}
-    - {fileID: 6746013677921401350, guid: 062fe8694a75665439629adf2379582f, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062fe8694a75665439629adf2379582f, type: 3}
 --- !u!4 &2652533470291282211 stripped
 Transform:
