@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour {
 
     public GameObject[] realWorldObjects;
 
+    public AudioSource elliotTheme;
+
 	void Awake () {
         avatarScript.enabled = true;
         shadowCharacterScript.enabled = false;
