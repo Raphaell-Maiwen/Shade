@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
 
     public AudioSource elliotTheme;
 
+    public GameObject littleCheat;
+
 	void Awake () {
         avatarScript.enabled = true;
         shadowCharacterScript.enabled = false;
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour {
                 foreach (GameObject GO in realWorldObjects) {
                     if (GO.tag != "Player") {
                         GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.ShadowsOnly;
+                        littleCheat.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.ShadowsOnly; ;
                     }
                     else {
                         GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
@@ -47,6 +50,7 @@ public class GameManager : MonoBehaviour {
                 foreach (GameObject GO in realWorldObjects) {
                     if (GO.tag != "Player") {
                         GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.On;
+                        littleCheat.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.On;
                     }
                     else {
                         GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
