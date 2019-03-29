@@ -15,20 +15,30 @@ public class ShadowProjection : MonoBehaviour{
         for (int i = 0; i < objectsToProject.Length; i++) {
             UpdateShadow(objectsToProject[i]);
         }
+
+        transform.hasChanged = false;
     }
 
     private void Update(){
+        //When the light moves, all of the shadows have to be updated
+        if (transform.hasChanged) {
+            for (int i = 0; i < objectsToProject.Length; i++) {
+                UpdateShadow(objectsToProject[i]);
+            }
+            transform.hasChanged = false;
+        }
+
         //Only for testing purposes; once the extrusion works, UpdateShadows shouldn't be called on every frame
         /*for (int i = 0; i < objectsToProject.Length; i++)
         {
             UpdateShadow(objectsToProject[i]);
         }*/
 
-        if (Input.GetKeyDown(KeyCode.H)) {
+        /*if (Input.GetKeyDown(KeyCode.H)) {
             for (int i = 0; i < objectsToProject.Length; i++) {
                 UpdateShadow(objectsToProject[i]);
             }
-        }
+        }*/
     }
 
     public void UpdateShadow(GameObject objectToUpdate) {

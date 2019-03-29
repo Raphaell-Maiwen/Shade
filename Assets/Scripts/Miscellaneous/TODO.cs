@@ -6,10 +6,6 @@ public class TODO : MonoBehaviour {
     /*
      -Adjust the metrics for Shade
      -Questions to answer:
-        -How will Elliot push/pull blocks? (pick up and snap / can stack objects / always pick up the one from the top)
-        -How will the objects rotate? (pre-determined positions)
-        -Do we have ways to make the objects bigger or smaller? (Otherwise, just getting them closer or farther from the wall changes their shadow size)
-            No
 
         -How long will we make the scenes? Do we have small scenes with level transitions, or ongoing levels with a moving camera?
         -Do we have wall jumps? Or any extra platforming mechanics (including platforms/ obstacles)
