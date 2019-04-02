@@ -6226,19 +6226,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 34073083, guid: 271ac0819bf053e40a89dbe2e703dbde, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 281025815, guid: 271ac0819bf053e40a89dbe2e703dbde, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1021746986, guid: 271ac0819bf053e40a89dbe2e703dbde, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1914542269, guid: 271ac0819bf053e40a89dbe2e703dbde, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 966420586020928777, guid: 271ac0819bf053e40a89dbe2e703dbde,
         type: 3}
@@ -7083,8 +7083,9 @@ MonoBehaviour:
   avatarScript: {fileID: 1712577515}
   shadowCharacterScript: {fileID: 1143753300}
   mainCamera: {fileID: 1505293192}
-  platformingCamera: {fileID: 1413596821}
+  platformingCamera: {fileID: 1074485184}
   realWorldObjects:
+  - {fileID: 0}
   - {fileID: 0}
   elliotTheme: {fileID: 1328087458}
 --- !u!4 &1328087457
@@ -7435,12 +7436,6 @@ MonoBehaviour:
   isASurface: 1
   canBeStacked: 0
   hasAnObjectOn: 0
---- !u!1 &1413596821 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8653644543325558545, guid: 2066f09296f0c244e809261332abbd64,
-    type: 3}
-  m_PrefabInstance: {fileID: 1878847204}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1424881128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10955,6 +10950,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShadowBuddy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8493104217957170449, guid: cc3156b267e6ba347bf247a406fb33c2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8493104217957170453, guid: cc3156b267e6ba347bf247a406fb33c2,
         type: 3}
