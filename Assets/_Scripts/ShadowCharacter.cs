@@ -15,7 +15,8 @@ public class ShadowCharacter : MonoBehaviour{
     void Update(){
         transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * speed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.y == 0f){
+        print(rb.velocity.y);
+        if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.y < 0.0001f && rb.velocity.y > -0.0001f){
             rb.velocity = jumpVelocity * Vector3.up;
         }
     }
