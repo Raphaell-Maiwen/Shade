@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public GameObject platformingCamera;
 
     public GameObject[] realWorldObjects;
+    ShadowProjection[] sourcesOfLight;
 
     public AudioSource elliotTheme;
 
@@ -19,13 +20,29 @@ public class GameManager : MonoBehaviour {
         shadowCharacterScript.enabled = false;
 
         realWorldObjects = GetRelevantRealObjects();
+        sourcesOfLight = FindObjectsOfType<ShadowProjection>();
 
         //The real world objects and player are not rendered while in platforming mode
         /*platformingCamera.GetComponent<Camera>().cullingMask &= ~(1 << LayerMask.NameToLayer("RealWorldObjects"));
         platformingCamera.GetComponent<Camera>().cullingMask &= ~(1 << LayerMask.NameToLayer("RealWorldPlayer"));*/
+
+        for (int i = 0; i < realWorldObjects.Length; i++) {
+            realWorldObjects[i].transform.hasChanged = false;
+        }
     }
 	
 	void Update () {
+        //Update the shadows of all objects from all sources of light when they're moving
+        for (int i = 0; i < realWorldObjects.Length; i++) {
+            if (realWorldObjects[i].transform.hasChanged) {
+                for (int j = 0; j < sourcesOfLight.Length; j++) {
+                    sourcesOfLight[j].UpdateShadow(realWorldObjects[i]);
+                }
+                realWorldObjects[i].transform.hasChanged = false;
+            }
+        }
+
+        //Switch between 3D and 2D worlds
         if (Input.GetKeyDown(KeyCode.Tab)) {
             avatarScript.enabled = !avatarScript.enabled;
             shadowCharacterScript.enabled = !shadowCharacterScript.enabled;
@@ -68,7 +85,7 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        objectsToProject.Add(GameObject.FindGameObjectWithTag("Player"));
+        //objectsToProject.Add(GameObject.FindGameObjectWithTag("Player"));
 
         return objectsToProject.ToArray();
     }
