@@ -49,6 +49,18 @@ public class Avatar_Update : MonoBehaviour
     {
         ManageMovement();
         ManagePickups();
+        CheckWin();
+    }
+
+    void CheckWin()
+    {
+        if (KeyReceived.keyReceived == true)
+
+        {
+            print("shade wins?");
+            anim.SetTrigger("shade_Wins");
+            KeyReceived.keyReceived = false;
+        }
     }
 
     void ManageMovement()
@@ -212,6 +224,7 @@ public class Avatar_Update : MonoBehaviour
         }
 
     }
+
 
  
 
