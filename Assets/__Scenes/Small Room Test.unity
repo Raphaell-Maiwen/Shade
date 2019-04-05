@@ -6459,9 +6459,7 @@ MonoBehaviour:
   shadowCharacterScript: {fileID: 1328840229}
   mainCamera: {fileID: 1505293192}
   platformingCamera: {fileID: 1074485184}
-  realWorldObjects:
-  - {fileID: 0}
-  - {fileID: 0}
+  renderedObjects: []
   elliotTheme: {fileID: 1328087458}
 --- !u!4 &1328087457
 Transform:
@@ -6674,7 +6672,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328840228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 52.2, y: 5.3, z: 11.186}
+  m_LocalPosition: {x: 52.2, y: 5.3, z: 11.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
