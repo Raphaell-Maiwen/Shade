@@ -17,6 +17,8 @@ public class Avatar : MonoBehaviour {
     Vector3 newObjectPos;
     public GameObject objectToBePlacedOn;
 
+    private Vector3 inputVector;
+
     Rigidbody rb;
 
     public Animator animator;
@@ -29,14 +31,14 @@ public class Avatar : MonoBehaviour {
 
     // Update is called once per frame
     void Update(){
-        transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * speed * Time.deltaTime);
-        transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * speed * Time.deltaTime);
+        inputVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
+        transform.position += inputVector.normalized * speed * Time.deltaTime;
+
+
+        //Todo: Change GetAxis to inputVector
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) {
-            //Jonna : This is where the walking animation plays
-            //animator.SetBool("Elliot_IDLE", false);
-            //animator.SetBool("Elliot_WALK", true);
-            print("Bouge");
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(inputVector), 100 * Time.deltaTime);
         }
         else {
             //Jonna : this is where the walking animation stops / idle starts
