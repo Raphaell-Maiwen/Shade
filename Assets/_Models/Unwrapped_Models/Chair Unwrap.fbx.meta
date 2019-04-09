@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: a488ef7f93df8d147b591eda0cde51e2
+guid: 9801aa9107314fc4daf820a6f5262542
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: No Name
+    2100000: Unwrap Texture Checker Material
     2300000: //RootNode
     3300000: //RootNode
-    4300000: counter
+    4300000: Chair
   externalObjects: {}
   materials:
     importMaterials: 1

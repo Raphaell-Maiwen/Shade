@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a5dd8a725cde293499b00365859ccc29
+guid: 0461215cbb7520840a935a1860d79209
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,7 +8,7 @@ ModelImporter:
     2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Table
+    4300000: Remote
   externalObjects: {}
   materials:
     importMaterials: 1
