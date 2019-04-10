@@ -9,7 +9,9 @@ public class Avatar : MonoBehaviour {
     private bool readyToRotate = false;
     public GameObject objectToRotate;
 
+    [SerializeField]
     private bool readyToHold = false;
+
     private bool isHolding = false;
     public GameObject objectToHold;
 
@@ -44,17 +46,19 @@ public class Avatar : MonoBehaviour {
             //Jonna : this is where the walking animation stops / idle starts
         }
 
-        if (readyToRotate) {
-            if (Input.GetKeyDown(KeyCode.R)) {
+        if (Input.GetKeyDown(KeyCode.R)) {
+            if (readyToRotate) {
                 objectToRotate.GetComponent<Rotate>().RotateClockwise();
             }
         }
         else if (Input.GetKeyDown(KeyCode.E)) {
+            print("Pressing E " + readyToHold);
             if (readyToHold) {
                 if (objectToHold.transform.parent != null) {
                     objectToHold.GetComponentInParent<MoveObject>().hasAnObjectOn = false;
                 }
 
+                print("Starting to hold");
                 objectToHold.transform.SetParent(this.transform);
                 readyToHold = false;
                 isHolding = true;
@@ -133,6 +137,7 @@ public class Avatar : MonoBehaviour {
         if (other.gameObject == objectToHold) {
             readyToHold = false;
             objectToHold = null;
+            print("Not ready to hold");
         }
         if (other.gameObject == objectToBePlacedOn) {
             readyToPlace = false;
