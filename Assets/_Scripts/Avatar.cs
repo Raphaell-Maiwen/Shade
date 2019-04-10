@@ -28,7 +28,7 @@ public class Avatar : MonoBehaviour {
     void Awake() {
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
-        //animator.SetBool("Elliot_IDLE", true);
+        animator.SetBool("isIdle", true);
     }
 
     // Update is called once per frame
@@ -41,9 +41,12 @@ public class Avatar : MonoBehaviour {
         //Todo: Change GetAxis to inputVector
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(inputVector), 100 * Time.deltaTime);
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isIdle", false);
         }
         else {
-            //Jonna : this is where the walking animation stops / idle starts
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isIdle", true);
         }
 
         if (Input.GetKeyDown(KeyCode.R)) {
@@ -67,11 +70,10 @@ public class Avatar : MonoBehaviour {
 
                 objectToBePlacedOn = null;
                 readyToPlace = false;
-                //animator.SetBool("Elliot_CARRY", true);
-                //Jonna : this is where the carrying animation starts
+                animator.SetBool("isHolding", true);
             }
             else {
-                //Jonna : this is where the carrying animation stops
+                animator.SetBool("isHolding", false);
                 isHolding = false;
                 PlaceObject();
             }
