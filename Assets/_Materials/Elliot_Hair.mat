@@ -76,7 +76,7 @@ Material:
     - _RampThreshold: 0.8
     - _RimMax: 0.414
     - _RimMin: 0.029
-    - _RimStrength: 0.392
+    - _RimStrength: 0.008
     - _SmoothnessTextureChannel: 1
     - _SpecBlend: 0.588
     - _SpecSmooth: 0.682

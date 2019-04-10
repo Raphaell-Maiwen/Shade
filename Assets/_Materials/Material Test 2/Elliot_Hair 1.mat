@@ -81,7 +81,7 @@ Material:
     - _OcclusionStrength: 1
     - _Offset1: 0
     - _Offset2: 0
-    - _Outline: 8
+    - _Outline: 10
     - _Parallax: 0.02
     - _RampSmooth: 0.107
     - _RampSmoothAdd: 0.166
@@ -111,6 +111,6 @@ Material:
     - _Color: {r: 0.2264151, g: 0.17990388, b: 0.15485938, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HColor: {r: 0.22745098, g: 0.18039216, b: 0.15294118, a: 1}
-    - _OutlineColor: {r: 0.19215688, g: 0.18039216, b: 0.18823531, a: 1}
+    - _OutlineColor: {r: 0.5188679, g: 0.45382506, b: 0.369571, a: 1}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
     - _SColor: {r: 0.22745098, g: 0.18039216, b: 0.15294118, a: 1}

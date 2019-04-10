@@ -82,7 +82,7 @@ Material:
     - _SpecSmooth: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _ThresholdScale: 10
+    - _ThresholdScale: 15
     - _ThresholdStrength: 1
     - _UVSec: 0
     - _ZWrite: 1
