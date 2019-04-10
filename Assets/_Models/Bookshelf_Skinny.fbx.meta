@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: ff1a347d99bcb1446af1e24792f2d7e2
+guid: 2ef6e9e22981914409c360ff74c948d6
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: 'Material #85'
+    2100000: Unwrap Texture Checker Material
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Book Shelf
+    4300000: Bookshelf Skinny
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Elliot_Hair
   m_Shader: {fileID: 4800000, guid: 4afb2fb87321fe647840db5fb623fc28, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -64,31 +64,31 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _GlossMapScale: 1
+    - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RampSmooth: 0.2
-    - _RampSmoothAdd: 0.75
-    - _RampThreshold: 0.5
-    - _RimMax: 0.85
-    - _RimMin: 0.6
-    - _RimStrength: 0.5
-    - _SmoothnessTextureChannel: 0
-    - _SpecBlend: 1
-    - _SpecSmooth: 1
+    - _RampSmooth: 0.1
+    - _RampSmoothAdd: 0.1
+    - _RampThreshold: 0.8
+    - _RimMax: 0.414
+    - _RimMin: 0.029
+    - _RimStrength: 0.392
+    - _SmoothnessTextureChannel: 1
+    - _SpecBlend: 0.588
+    - _SpecSmooth: 0.682
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _ThresholdScale: 9.19
+    - _ThresholdScale: 20
     - _ThresholdStrength: 1
     - _UVSec: 0
     - _ZWrite: 1
     - __dummy__: 0
     m_Colors:
-    - _Color: {r: 0.18823531, g: 0.18823531, b: 0.18039216, a: 1}
+    - _Color: {r: 0.2264151, g: 0.17990388, b: 0.15485938, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 0.3372549, g: 0.24705884, b: 0.20784315, a: 1}
-    - _SColor: {r: 0.14509805, g: 0.15686275, b: 0.14901961, a: 1}
+    - _HColor: {r: 0.23584908, g: 0.18724158, b: 0.15686189, a: 1}
+    - _SColor: {r: 0, g: 0, b: 0, a: 1}
