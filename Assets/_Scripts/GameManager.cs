@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour {
-    public Avatar avatarScript;
+    public Avatar_Update avatarScript;
     public ShadowCharacter shadowCharacterScript;
 
     public GameObject mainCamera;
