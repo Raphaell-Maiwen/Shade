@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingTime: 1
+  rotationCycle: 
 --- !u!54 &4707944510428991149
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -133,6 +134,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9e64a36c452b6c2429c582b2ffd74f79, type: 2}
+    - target: {fileID: 3300002, guid: e71c9e37a19339c4b9d24a8efc0cb88c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: c5b17dc0566ee574793e486ab45b9263, type: 3}
+    - target: {fileID: 3300000, guid: e71c9e37a19339c4b9d24a8efc0cb88c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: c35bcec2a9e9b75479587a7add980856, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e71c9e37a19339c4b9d24a8efc0cb88c, type: 3}
 --- !u!4 &4707944511450453644 stripped
