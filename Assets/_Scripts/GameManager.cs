@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour {
-    public Avatar_Update avatarScript;
+    public Avatar avatarScript;
     public ShadowCharacter shadowCharacterScript;
 
     public GameObject mainCamera;
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour {
         }
 
         //Switch between 3D and 2D worlds
-        if (Input.GetKeyDown(KeyCode.Tab)) {
+        if (Input.GetButtonDown("Switch")) {
             avatarScript.enabled = !avatarScript.enabled;
             shadowCharacterScript.enabled = !shadowCharacterScript.enabled;
 

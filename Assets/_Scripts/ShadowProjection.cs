@@ -52,7 +52,7 @@ public class ShadowProjection : MonoBehaviour{
         int layerMask = LayerMask.GetMask("Wall");
 
         for (int i = 0; i < meshVertices.Length; i++) {
-            if (Physics.Raycast(transform.position, Vector3.Normalize(meshVertices[i] - transform.position), out hit, 100, layerMask)){
+            if (Physics.Raycast(transform.position, Vector3.Normalize(meshVertices[i] - transform.position), out hit, 200, layerMask)){
                 shadowVertices.Add(hit.point);
             }
         }
@@ -61,7 +61,7 @@ public class ShadowProjection : MonoBehaviour{
 
         //For testing purposes
         for (int i = 0; i < shadowVertices.Count; i++) {
-            if (Physics.Raycast(transform.position, Vector3.Normalize(shadowVertices[i] - transform.position), out hit, 100, layerMask)) {
+            if (Physics.Raycast(transform.position, Vector3.Normalize(shadowVertices[i] - transform.position), out hit, 200, layerMask)) {
                 Debug.DrawRay(transform.position, Vector3.Normalize((shadowVertices[i] - transform.position)) * hit.distance, Color.red, 1f);
             }
         }
