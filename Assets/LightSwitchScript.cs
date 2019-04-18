@@ -11,7 +11,7 @@ public class LightSwitchScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        light01.gameObject.SetActive(false);
+        light01.gameObject.SetActive(true);
         light02.gameObject.SetActive(false);
     }
 
