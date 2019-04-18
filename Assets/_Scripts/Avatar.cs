@@ -97,11 +97,13 @@ public class Avatar : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other){
         GameObject otherGO = other.gameObject;
+        bool interactive = false;
         
         //if (!readyToRotate && other.gameObject.tag == "RealWorld") {
         if (otherGO.GetComponent<Rotate>() != null && otherGO.GetComponent<Rotate>().rotationCycle.Length > 0) {
             objectToRotate = otherGO;
             readyToRotate = true;
+            interactive = true;
         }
         //}
 
@@ -112,13 +114,20 @@ public class Avatar : MonoBehaviour {
                 print("Ready to hold");
                 objectToHold = otherGO;
                 readyToHold = true;
+                interactive = true;
             }
             else if (moveObjectScript.isASurface) {
                 objectToBePlacedOn = otherGO;
                 readyToPlace = true;
                 newObjectPos = other.transform.position;
                 newObjectPos.y += 1;
+                interactive = true;
             }
+        }
+
+        if (interactive && otherGO.GetComponent("Halo")) {
+            Behaviour halo = (Behaviour)otherGO.GetComponent("Halo");
+            halo.enabled = true;
         }
     }
 
@@ -131,19 +140,26 @@ public class Avatar : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
+        GameObject otherGO = other.gameObject;
+
         //print("Not ready to rotate");
-        if (other.gameObject == objectToRotate) {
+        if (otherGO == objectToRotate) {
             readyToRotate = false;
             objectToRotate = null;
         }
-        if (other.gameObject == objectToHold) {
+        if (otherGO == objectToHold) {
             readyToHold = false;
             objectToHold = null;
             print("Not ready to hold");
         }
-        if (other.gameObject == objectToBePlacedOn) {
+        if (otherGO == objectToBePlacedOn) {
             readyToPlace = false;
             objectToBePlacedOn = null;
+        }
+
+        if (otherGO.GetComponent("Halo")) {
+            Behaviour halo = (Behaviour)otherGO.GetComponent("Halo");
+            halo.enabled = false;
         }
     }
 }
