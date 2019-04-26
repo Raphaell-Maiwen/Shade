@@ -1383,10 +1383,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2263346807977821697}
   - component: {fileID: 7217589660455621563}
-  - component: {fileID: 5783532861517054905}
-  - component: {fileID: 6358400115529912213}
+  - component: {fileID: 1600422629}
   m_Layer: 0
-  m_Name: Elliot
+  m_Name: Elliot_v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1399,7 +1398,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6358400115529912214}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.57, y: -1.48, z: -2.17}
   m_LocalScale: {x: 2.3838742, y: 2.3838742, z: 2.3838742}
   m_Children:
@@ -1428,7 +1427,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5783532861517054905
+--- !u!114 &1600422629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1437,37 +1436,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6358400115529912214}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c1af06de84f77a459afae85b92d6567, type: 3}
+  m_Script: {fileID: 11500000, guid: 367de5e3fa8a9fa43a298339d0072209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontal: 0
-  vertical: 0
-  movementSpeed: 0.1
-  rotateSpeed: 0
-  speed: 4
-  rotSpeed: 200
-  isWalking: 0
+  speed: 5
+  jumpVelocity: 0
   objectToRotate: {fileID: 0}
+  readyToHold: 0
   objectToHold: {fileID: 0}
   objectToBePlacedOn: {fileID: 0}
---- !u!143 &6358400115529912213
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6358400115529912214}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  animator: {fileID: 0}
 --- !u!1 &6887091548727193571
 GameObject:
   m_ObjectHideFlags: 0

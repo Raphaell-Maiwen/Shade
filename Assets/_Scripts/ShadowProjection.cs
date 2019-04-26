@@ -345,6 +345,8 @@ public class ShadowProjection : MonoBehaviour{
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
 
+        //Layer 11  are shadow objects
+        shadowObject.layer = 11;
         shadowObject.AddComponent<MeshCollider>();
     }
 
