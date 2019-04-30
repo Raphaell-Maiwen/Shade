@@ -10,4 +10,11 @@ public class MoveObject : MonoBehaviour
 
     [HideInInspector]
     public bool hasAnObjectOn = false;
+
+    void Awake() {
+        if (this.GetComponent<ParticleSystem>()) {
+            GetComponent<ParticleSystem>().Clear();
+            GetComponent<ParticleSystem>().Stop();
+        }
+    }
 }

@@ -111,12 +111,21 @@ public class Avatar : MonoBehaviour {
 
         if (moveObjectScript != null) {
             if (!isHolding && moveObjectScript.canBeHeld && !moveObjectScript.hasAnObjectOn) {
-                print("Ready to hold");
+                if (objectToHold != null && objectToHold.GetComponent<ParticleSystem>()) {
+                    objectToHold.GetComponent<ParticleSystem>().Clear();
+                    objectToHold.GetComponent<ParticleSystem>().Stop();
+                }
+
                 objectToHold = otherGO;
                 readyToHold = true;
                 interactive = true;
             }
             else if (moveObjectScript.isASurface) {
+                if (objectToBePlacedOn != null && objectToBePlacedOn.GetComponent<ParticleSystem>()) {
+                    objectToBePlacedOn.GetComponent<ParticleSystem>().Clear();
+                    objectToBePlacedOn.GetComponent<ParticleSystem>().Stop();
+                }
+
                 objectToBePlacedOn = otherGO;
                 readyToPlace = true;
                 newObjectPos = other.transform.position;
@@ -125,9 +134,8 @@ public class Avatar : MonoBehaviour {
             }
         }
 
-        if (interactive && otherGO.GetComponent("Halo")) {
-            Behaviour halo = (Behaviour)otherGO.GetComponent("Halo");
-            halo.enabled = true;
+        if (otherGO.GetComponent<ParticleSystem>()) {
+            otherGO.GetComponent<ParticleSystem>().Play();
         }
     }
 
@@ -157,9 +165,9 @@ public class Avatar : MonoBehaviour {
             objectToBePlacedOn = null;
         }
 
-        if (otherGO.GetComponent("Halo")) {
-            Behaviour halo = (Behaviour)otherGO.GetComponent("Halo");
-            halo.enabled = false;
+        if (otherGO.GetComponent<ParticleSystem>()) {
+            otherGO.GetComponent<ParticleSystem>().Clear();
+            otherGO.GetComponent<ParticleSystem>().Stop();
         }
     }
 }
