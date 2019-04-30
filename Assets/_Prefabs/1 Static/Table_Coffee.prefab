@@ -5058,9 +5058,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1416572623247171634}
-  - component: {fileID: 1416572623247171635}
   - component: {fileID: 1416572623247171632}
-  - component: {fileID: 1446126075}
   m_Layer: 0
   m_Name: Table_Coffee
   m_TagString: Untagged
@@ -5090,20 +5088,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1416572623247171635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416572623247171645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92ec5c926c8220746abd3c20326d80db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotatingTime: 1
-  rotationCycle: 020000000200000002000000
 --- !u!54 &1416572623247171632
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5120,19 +5104,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!65 &1446126075
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416572623247171645}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.2, y: 0.96, z: 2.62}
-  m_Center: {x: 0, y: 1.26, z: 0}
 --- !u!1 &4154448052796433754
 GameObject:
   m_ObjectHideFlags: 0
