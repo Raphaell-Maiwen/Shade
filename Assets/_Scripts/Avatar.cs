@@ -57,6 +57,8 @@ public class Avatar : MonoBehaviour {
         else if (Input.GetButtonDown("Pickup")) {
             print("Pressing E " + readyToHold);
             if (readyToHold) {
+                objectToHold.GetComponent<MoveObject>().isMoving(true);
+
                 if (objectToHold.transform.parent != null) {
                     objectToHold.GetComponentInParent<MoveObject>().hasAnObjectOn = false;
                 }
@@ -67,6 +69,8 @@ public class Avatar : MonoBehaviour {
                 isHolding = true;
 
                 objectToHold.GetComponent<Rigidbody>().useGravity = false;
+                /*objectToHold.GetComponent<Rigidbody>().constraints =
+                    ~RigidbodyConstraints.FreezePositionY;*/
 
                 objectToBePlacedOn = null;
                 readyToPlace = false;
@@ -74,6 +78,7 @@ public class Avatar : MonoBehaviour {
             }
             else {
                 animator.SetBool("isHolding", false);
+                objectToHold.GetComponent<MoveObject>().isMoving(false);
                 isHolding = false;
                 PlaceObject();
             }
@@ -92,7 +97,10 @@ public class Avatar : MonoBehaviour {
             objectToHold.transform.SetParent(null);
         }
 
+        objectToHold.GetComponent<MoveObject>().isFalling = true;
+        objectToHold.GetComponent<Rigidbody>().isKinematic = false;
         objectToHold.GetComponent<Rigidbody>().useGravity = true;
+        objectToHold.GetComponent<Rigidbody>().constraints = ~RigidbodyConstraints.FreezePositionY;
     }
 
     private void OnTriggerEnter(Collider other){

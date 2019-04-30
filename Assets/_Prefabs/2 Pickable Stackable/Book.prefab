@@ -4717,7 +4717,7 @@ ParticleSystem:
 --- !u!199 &9187738868694061833
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4841,7 +4841,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &976951104061164751
 MonoBehaviour:
