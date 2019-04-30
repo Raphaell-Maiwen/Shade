@@ -4717,7 +4717,7 @@ ParticleSystem:
 --- !u!199 &2286951288266617206
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5120,7 +5120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingTime: 1
-  rotationCycle: 
+  rotationCycle: 02000000020000000200000002000000
 --- !u!114 &4872064601992096045
 MonoBehaviour:
   m_ObjectHideFlags: 0
