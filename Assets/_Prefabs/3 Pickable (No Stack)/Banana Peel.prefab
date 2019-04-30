@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 416614657810223404}
   - component: {fileID: 6375712490431303546}
   - component: {fileID: 7605301475237181840}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Banana Peel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
