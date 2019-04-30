@@ -5134,7 +5134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBeHeld: 1
-  isASurface: 1
+  isASurface: 0
   canBeStacked: 0
   hasAnObjectOn: 0
 --- !u!65 &4872064601992096047
