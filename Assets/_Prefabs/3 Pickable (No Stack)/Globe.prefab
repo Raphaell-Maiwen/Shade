@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6132802780613706311}
   - component: {fileID: 6132802780613706312}
   - component: {fileID: 933077957}
+  - component: {fileID: 4200011898933154976}
   m_Layer: 0
   m_Name: Globe
   m_TagString: Stackable
@@ -82,6 +83,19 @@ MonoBehaviour:
   isASurface: 0
   canBeStacked: 0
   hasAnObjectOn: 0
+--- !u!65 &4200011898933154976
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6132802780613706309}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.8657093, z: 1.8175809}
+  m_Center: {x: -0.04111792, y: 0.91714543, z: 0.031207938}
 --- !u!1 &6425432102445092927
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,8 +185,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0388212, y: 1.3519013, z: 1}
+  m_Center: {x: 0.070917636, y: -0.17595069, z: -0.0000000020492457}
 --- !u!1 &8276155021765182900
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,8 +276,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.1635422, y: 0.49168828, z: 2.2277389}
+  m_Center: {x: 0.00000007857455, y: 0.20157193, z: 0.019385329}
 --- !u!1001 &6132802780196513138
 PrefabInstance:
   m_ObjectHideFlags: 0
