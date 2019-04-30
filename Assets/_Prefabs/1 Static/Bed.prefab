@@ -656,6 +656,7 @@ MonoBehaviour:
   isASurface: 1
   canBeStacked: 0
   hasAnObjectOn: 0
+  isFalling: 0
 --- !u!198 &4893016550350468130
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5263,7 +5264,7 @@ ParticleSystem:
 --- !u!199 &8145944482879710167
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5432,6 +5433,7 @@ MonoBehaviour:
   isASurface: 1
   canBeStacked: 0
   hasAnObjectOn: 0
+  isFalling: 0
 --- !u!198 &4192752993814920124
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -10039,7 +10041,7 @@ ParticleSystem:
 --- !u!199 &7564902778170376155
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -10208,6 +10210,7 @@ MonoBehaviour:
   isASurface: 1
   canBeStacked: 0
   hasAnObjectOn: 0
+  isFalling: 0
 --- !u!198 &6186171656479313745
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -14815,7 +14818,7 @@ ParticleSystem:
 --- !u!199 &6901344755640732340
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -14930,7 +14933,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!1 &7918684918646609684
 GameObject:
@@ -15042,6 +15045,7 @@ MonoBehaviour:
   isASurface: 1
   canBeStacked: 0
   hasAnObjectOn: 0
+  isFalling: 0
 --- !u!198 &3361327590489911106
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -19649,7 +19653,7 @@ ParticleSystem:
 --- !u!199 &8051004433390564395
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -19715,10 +19719,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5006250355990753866}
     m_Modifications:
-    - target: {fileID: 100000, guid: bd480ddd523366f41a336f28f32129e3, type: 3}
-      propertyPath: m_Name
-      value: Bed
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bd480ddd523366f41a336f28f32129e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -19774,6 +19774,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: bd480ddd523366f41a336f28f32129e3, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.11319787
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: bd480ddd523366f41a336f28f32129e3, type: 3}
+      propertyPath: m_Name
+      value: Bed
       objectReference: {fileID: 0}
     - target: {fileID: 3300000, guid: bd480ddd523366f41a336f28f32129e3, type: 3}
       propertyPath: m_Mesh

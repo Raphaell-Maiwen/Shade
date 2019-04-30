@@ -431,7 +431,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!65 &4189770532081161210
 BoxCollider:
@@ -569,14 +569,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 966420585716898454}
     m_Modifications:
-    - target: {fileID: 100000, guid: 5040ecbe6b34ba944ab714e75b220308, type: 3}
-      propertyPath: m_Name
-      value: lamp_standing
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 5040ecbe6b34ba944ab714e75b220308, type: 3}
-      propertyPath: m_TagString
-      value: Both
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5040ecbe6b34ba944ab714e75b220308, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -632,6 +624,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 5040ecbe6b34ba944ab714e75b220308, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.259192
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5040ecbe6b34ba944ab714e75b220308, type: 3}
+      propertyPath: m_Name
+      value: lamp_standing
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5040ecbe6b34ba944ab714e75b220308, type: 3}
+      propertyPath: m_TagString
+      value: Both
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 5040ecbe6b34ba944ab714e75b220308, type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -110,6 +110,7 @@ MonoBehaviour:
   isASurface: 1
   canBeStacked: 0
   hasAnObjectOn: 0
+  isFalling: 0
 --- !u!198 &5880334457889884143
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4717,7 +4718,7 @@ ParticleSystem:
 --- !u!199 &14640444414850290
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4977,6 +4978,7 @@ MonoBehaviour:
   isASurface: 1
   canBeStacked: 0
   hasAnObjectOn: 0
+  isFalling: 0
 --- !u!198 &3219946410558218385
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -9584,7 +9586,7 @@ ParticleSystem:
 --- !u!199 &6300811221864325430
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9753,6 +9755,7 @@ MonoBehaviour:
   isASurface: 1
   canBeStacked: 0
   hasAnObjectOn: 0
+  isFalling: 0
 --- !u!198 &3238447504067950982
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -14360,7 +14363,7 @@ ParticleSystem:
 --- !u!199 &1422376051820929650
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -14915,7 +14918,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!1 &9053948807430487460
 GameObject:
@@ -15027,6 +15030,7 @@ MonoBehaviour:
   isASurface: 1
   canBeStacked: 0
   hasAnObjectOn: 0
+  isFalling: 0
 --- !u!198 &486653165933110417
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -19634,7 +19638,7 @@ ParticleSystem:
 --- !u!199 &3421937832125322556
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

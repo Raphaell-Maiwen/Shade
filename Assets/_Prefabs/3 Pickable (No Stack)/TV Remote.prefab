@@ -49,7 +49,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!114 &3445241445117125211
 MonoBehaviour:
@@ -67,6 +67,7 @@ MonoBehaviour:
   isASurface: 0
   canBeStacked: 0
   hasAnObjectOn: 0
+  isFalling: 0
 --- !u!65 &4334814281658434020
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -165,7 +165,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!65 &1523424788
 BoxCollider:
@@ -276,10 +276,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1708196316744493112}
     m_Modifications:
-    - target: {fileID: 100000, guid: a39e4aaa3279a844fad710e0f0bd5596, type: 3}
-      propertyPath: m_Name
-      value: Fridge
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a39e4aaa3279a844fad710e0f0bd5596, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -335,6 +331,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: a39e4aaa3279a844fad710e0f0bd5596, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.036741916
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a39e4aaa3279a844fad710e0f0bd5596, type: 3}
+      propertyPath: m_Name
+      value: Fridge
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: a39e4aaa3279a844fad710e0f0bd5596, type: 3}
       propertyPath: m_Materials.Array.data[0]
