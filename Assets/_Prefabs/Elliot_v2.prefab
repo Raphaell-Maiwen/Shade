@@ -891,7 +891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4400725962948301574
 Transform:
   m_ObjectHideFlags: 0
@@ -1384,6 +1384,9 @@ GameObject:
   - component: {fileID: 2263346807977821697}
   - component: {fileID: 7217589660455621563}
   - component: {fileID: 1600422629}
+  - component: {fileID: 6358400115529912215}
+  - component: {fileID: 6358400115529912216}
+  - component: {fileID: 6358400115529912217}
   m_Layer: 12
   m_Name: Elliot_v2
   m_TagString: Player
@@ -1446,6 +1449,45 @@ MonoBehaviour:
   objectToHold: {fileID: 0}
   objectToBePlacedOn: {fileID: 0}
   animator: {fileID: 0}
+--- !u!65 &6358400115529912215
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6358400115529912214}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: 0.24, z: 0}
+--- !u!65 &6358400115529912216
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6358400115529912214}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 1.7784175, z: 0.4}
+  m_Center: {x: 0.01178134, y: 0.6808883, z: 0.011467887}
+--- !u!65 &6358400115529912217
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6358400115529912214}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 1.7784173, z: 0.9}
+  m_Center: {x: -0.00019098747, y: 0.68088835, z: 0.0014597909}
 --- !u!1 &6887091548727193571
 GameObject:
   m_ObjectHideFlags: 0
