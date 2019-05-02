@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &130034558
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -239,6 +239,10 @@ MonoBehaviour:
   speed: 5
   jumpVelocity: 4
   objectToRotate: {fileID: 0}
+  readyToHold: 0
+  objectToHold: {fileID: 0}
+  objectToBePlacedOn: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!65 &130034564
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -312,6 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingTime: 1
+  rotationCycle: 
 --- !u!54 &179141900
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -688,14 +693,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 100000, guid: dd25b29166843df43a0fef00940987a9, type: 3}
-      propertyPath: m_Name
-      value: bananapeel
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: dd25b29166843df43a0fef00940987a9, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dd25b29166843df43a0fef00940987a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.39
@@ -751,6 +748,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: dd25b29166843df43a0fef00940987a9, type: 3}
       propertyPath: m_LocalScale.z
       value: 33.27534
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dd25b29166843df43a0fef00940987a9, type: 3}
+      propertyPath: m_Name
+      value: bananapeel
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dd25b29166843df43a0fef00940987a9, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd25b29166843df43a0fef00940987a9, type: 3}
@@ -925,6 +930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingTime: 1
+  rotationCycle: 
 --- !u!1 &935092844
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingTime: 1
+  rotationCycle: 
 --- !u!54 &935092846
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1081,6 +1088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingTime: 1
+  rotationCycle: 
 --- !u!54 &1027978820
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1180,6 +1188,7 @@ GameObject:
   - component: {fileID: 1097662377}
   - component: {fileID: 1097662378}
   - component: {fileID: 1097662379}
+  - component: {fileID: 1097662380}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -1251,7 +1260,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cc6d883f464984fbe8639e1f362d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testMesh: {fileID: 1817381215}
+--- !u!114 &1097662380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097662376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a20d9ce7d93644985decec17133571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1573307733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,6 +1388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingTime: 1
+  rotationCycle: 
 --- !u!54 &1717272220
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1558,13 +1579,14 @@ GameObject:
   - component: {fileID: 1756816706}
   - component: {fileID: 1756816705}
   - component: {fileID: 1756816704}
+  - component: {fileID: 1756816707}
   m_Layer: 0
   m_Name: Spot Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1756816704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1572,12 +1594,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756816703}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9cc6d883f464984fbe8639e1f362d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testMesh: {fileID: 1817381215}
 --- !u!108 &1756816705
 Light:
   m_ObjectHideFlags: 0
@@ -1630,6 +1651,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1756816707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756816703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a20d9ce7d93644985decec17133571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1817381215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,6 +1773,8 @@ MonoBehaviour:
   shadowCharacterScript: {fileID: 651023207}
   mainCamera: {fileID: 534669902}
   platformingCamera: {fileID: 1573307733}
+  renderedObjects: []
+  elliotTheme: {fileID: 0}
 --- !u!4 &1951231422
 Transform:
   m_ObjectHideFlags: 0
