@@ -83,6 +83,7 @@ MonoBehaviour:
   isASurface: 0
   canBeStacked: 1
   hasAnObjectOn: 0
+  isFalling: 0
 --- !u!65 &1140287076
 BoxCollider:
   m_ObjectHideFlags: 0

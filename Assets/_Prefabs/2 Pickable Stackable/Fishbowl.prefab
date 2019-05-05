@@ -185,8 +185,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4167487090254290091}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6115, y: 1.6115, z: 1.6115}
+  m_LocalPosition: {x: 0, y: 0.324, z: 0}
+  m_LocalScale: {x: 0.74586, y: 0.74586, z: 0.74586}
   m_Children: []
   m_Father: {fileID: 4167487091489324303}
   m_RootOrder: 2
@@ -247,8 +247,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.66131115, y: 0.4336219, z: 0.6527727}
-  m_Center: {x: 0.004269305, y: 0.22626625, z: -0.002845895}
+  m_Size: {x: 0, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4167487090255291625
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +959,7 @@ MonoBehaviour:
   isASurface: 0
   canBeStacked: 1
   hasAnObjectOn: 0
+  isFalling: 0
 --- !u!65 &4167487091489324300
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1270,6 +1271,7 @@ MonoBehaviour:
   isASurface: 1
   canBeStacked: 0
   hasAnObjectOn: 0
+  isFalling: 0
 --- !u!198 &33793756653361076
 ParticleSystem:
   m_ObjectHideFlags: 0
