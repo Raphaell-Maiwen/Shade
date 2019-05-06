@@ -1424,7 +1424,6 @@ MonoBehaviour:
   speed: 5
   jumpVelocity: 4
   objectToRotate: {fileID: 0}
-  readyToHold: 0
   objectToHold: {fileID: 0}
   objectToBePlacedOn: {fileID: 0}
   animator: {fileID: 0}
@@ -1439,8 +1438,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7586136, y: 3.7574482, z: 0.931033}
-  m_Center: {x: -0.017242432, y: 1.3787241, z: -0.034483492}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &1328809011144815341
 BoxCollider:
   m_ObjectHideFlags: 0

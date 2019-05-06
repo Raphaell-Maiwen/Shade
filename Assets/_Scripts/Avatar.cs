@@ -9,9 +9,7 @@ public class Avatar : MonoBehaviour {
     private bool readyToRotate = false;
     public GameObject objectToRotate;
 
-    [SerializeField]
     private bool readyToHold = false;
-
     private bool isHolding = false;
     public GameObject objectToHold;
 
@@ -28,7 +26,7 @@ public class Avatar : MonoBehaviour {
     void Awake() {
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
-        animator.SetBool("isIdle", true);
+        //animator.SetBool("Elliot_IDLE", true);
     }
 
     // Update is called once per frame
@@ -41,44 +39,35 @@ public class Avatar : MonoBehaviour {
         //Todo: Change GetAxis to inputVector
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(inputVector), 100 * Time.deltaTime);
-            animator.SetBool("isWalking", true);
-            animator.SetBool("isIdle", false);
         }
         else {
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isIdle", true);
+            //Jonna : this is where the walking animation stops / idle starts
         }
 
-        if (Input.GetButtonDown("Rotate")) {
-            if (readyToRotate) {
+        if (readyToRotate) {
+            if (Input.GetKeyDown(KeyCode.R)) {
                 objectToRotate.GetComponent<Rotate>().RotateClockwise();
             }
         }
-        else if (Input.GetButtonDown("Pickup")) {
-            print("Pressing E " + readyToHold);
+        else if (Input.GetKeyDown(KeyCode.E)) {
             if (readyToHold) {
-                objectToHold.GetComponent<MoveObject>().isMoving(true);
-
                 if (objectToHold.transform.parent != null) {
                     objectToHold.GetComponentInParent<MoveObject>().hasAnObjectOn = false;
                 }
 
-                print("Starting to hold");
                 objectToHold.transform.SetParent(this.transform);
                 readyToHold = false;
                 isHolding = true;
 
                 objectToHold.GetComponent<Rigidbody>().useGravity = false;
-                /*objectToHold.GetComponent<Rigidbody>().constraints =
-                    ~RigidbodyConstraints.FreezePositionY;*/
 
                 objectToBePlacedOn = null;
                 readyToPlace = false;
-                animator.SetBool("isHolding", true);
+                //animator.SetBool("Elliot_CARRY", true);
+                //Jonna : this is where the carrying animation starts
             }
             else {
-                animator.SetBool("isHolding", false);
-                objectToHold.GetComponent<MoveObject>().isMoving(false);
+                //Jonna : this is where the carrying animation stops
                 isHolding = false;
                 PlaceObject();
             }
@@ -97,21 +86,16 @@ public class Avatar : MonoBehaviour {
             objectToHold.transform.SetParent(null);
         }
 
-        objectToHold.GetComponent<MoveObject>().isFalling = true;
-        objectToHold.GetComponent<Rigidbody>().isKinematic = false;
         objectToHold.GetComponent<Rigidbody>().useGravity = true;
-        objectToHold.GetComponent<Rigidbody>().constraints = ~RigidbodyConstraints.FreezePositionY;
     }
 
     private void OnTriggerEnter(Collider other){
         GameObject otherGO = other.gameObject;
-        bool interactive = false;
         
         //if (!readyToRotate && other.gameObject.tag == "RealWorld") {
         if (otherGO.GetComponent<Rotate>() != null && otherGO.GetComponent<Rotate>().rotationCycle.Length > 0) {
             objectToRotate = otherGO;
             readyToRotate = true;
-            interactive = true;
         }
         //}
 
@@ -119,31 +103,16 @@ public class Avatar : MonoBehaviour {
 
         if (moveObjectScript != null) {
             if (!isHolding && moveObjectScript.canBeHeld && !moveObjectScript.hasAnObjectOn) {
-                if (objectToHold != null && objectToHold.GetComponent<ParticleSystem>()) {
-                    objectToHold.GetComponent<ParticleSystem>().Clear();
-                    objectToHold.GetComponent<ParticleSystem>().Stop();
-                }
-
+                print("Ready to hold");
                 objectToHold = otherGO;
                 readyToHold = true;
-                interactive = true;
             }
             else if (moveObjectScript.isASurface) {
-                if (objectToBePlacedOn != null && objectToBePlacedOn.GetComponent<ParticleSystem>()) {
-                    objectToBePlacedOn.GetComponent<ParticleSystem>().Clear();
-                    objectToBePlacedOn.GetComponent<ParticleSystem>().Stop();
-                }
-
                 objectToBePlacedOn = otherGO;
                 readyToPlace = true;
                 newObjectPos = other.transform.position;
                 newObjectPos.y += 1;
-                interactive = true;
             }
-        }
-
-        if (otherGO.GetComponent<ParticleSystem>()) {
-            otherGO.GetComponent<ParticleSystem>().Play();
         }
     }
 
@@ -156,26 +125,18 @@ public class Avatar : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        GameObject otherGO = other.gameObject;
-
         //print("Not ready to rotate");
-        if (otherGO == objectToRotate) {
+        if (other.gameObject == objectToRotate) {
             readyToRotate = false;
             objectToRotate = null;
         }
-        if (otherGO == objectToHold) {
+        if (other.gameObject == objectToHold) {
             readyToHold = false;
             objectToHold = null;
-            print("Not ready to hold");
         }
-        if (otherGO == objectToBePlacedOn) {
+        if (other.gameObject == objectToBePlacedOn) {
             readyToPlace = false;
             objectToBePlacedOn = null;
-        }
-
-        if (otherGO.GetComponent<ParticleSystem>()) {
-            otherGO.GetComponent<ParticleSystem>().Clear();
-            otherGO.GetComponent<ParticleSystem>().Stop();
         }
     }
 }

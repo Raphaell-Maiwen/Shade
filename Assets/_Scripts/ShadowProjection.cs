@@ -7,9 +7,9 @@ public class ShadowProjection : MonoBehaviour{
     GameObject[] objectsToProject;
 
     //The real world object as the key, the shadow object as the value
-    Dictionary<GameObject, GameObject> shadowObjects = new Dictionary<GameObject, GameObject>();
+    Dictionary<GameObject, GameObject> shadowObjects = new Dictionary<GameObject,GameObject>();
 
-    void Start() {
+    void Start(){
         objectsToProject = GetRelevantRealObjects();
         //shadowObjects = new GameObject[objectsToProject.Length];
         for (int i = 0; i < objectsToProject.Length; i++) {
@@ -19,7 +19,7 @@ public class ShadowProjection : MonoBehaviour{
         transform.hasChanged = false;
     }
 
-    private void Update() {
+    private void Update(){
         //When the light moves, all of the shadows have to be updated
         if (transform.hasChanged) {
             for (int i = 0; i < objectsToProject.Length; i++) {
@@ -27,6 +27,18 @@ public class ShadowProjection : MonoBehaviour{
             }
             transform.hasChanged = false;
         }
+
+        //Only for testing purposes; once the extrusion works, UpdateShadows shouldn't be called on every frame
+        /*for (int i = 0; i < objectsToProject.Length; i++)
+        {
+            UpdateShadow(objectsToProject[i]);
+        }*/
+
+        /*if (Input.GetKeyDown(KeyCode.H)) {
+            for (int i = 0; i < objectsToProject.Length; i++) {
+                UpdateShadow(objectsToProject[i]);
+            }
+        }*/
     }
 
     public void UpdateShadow(GameObject objectToUpdate) {
@@ -36,11 +48,11 @@ public class ShadowProjection : MonoBehaviour{
         List<Vector3> shadowVertices = new List<Vector3>();
 
         RaycastHit hit;
-
+        
         int layerMask = LayerMask.GetMask("Wall");
 
         for (int i = 0; i < meshVertices.Length; i++) {
-            if (Physics.Raycast(transform.position, Vector3.Normalize(meshVertices[i] - transform.position), out hit, 200, layerMask)) {
+            if (Physics.Raycast(transform.position, Vector3.Normalize(meshVertices[i] - transform.position), out hit, 100, layerMask)){
                 shadowVertices.Add(hit.point);
             }
         }
@@ -49,17 +61,12 @@ public class ShadowProjection : MonoBehaviour{
 
         //For testing purposes
         for (int i = 0; i < shadowVertices.Count; i++) {
-            if (Physics.Raycast(transform.position, Vector3.Normalize(shadowVertices[i] - transform.position), out hit, 200, layerMask)) {
+            if (Physics.Raycast(transform.position, Vector3.Normalize(shadowVertices[i] - transform.position), out hit, 100, layerMask)) {
                 Debug.DrawRay(transform.position, Vector3.Normalize((shadowVertices[i] - transform.position)) * hit.distance, Color.red, 1f);
             }
         }
 
-        shadowVertices = FindCenter(shadowVertices);
-
-        //GenerateMesh(objectToUpdate, shadowVertices);
-
         int shadowVerticesCount = shadowVertices.Count;
-
         for (int i = 0; i < shadowVerticesCount; i++) {
             Vector3 newVertex = shadowVertices[i];
             newVertex.z -= 1;
@@ -90,7 +97,7 @@ public class ShadowProjection : MonoBehaviour{
         GO.GetComponent<MeshFilter>().mesh.GetVertices(MeshVertices);
 
         int i = 0;
-        foreach (Vector3 vertex in MeshVertices) {
+        foreach(Vector3 vertex in MeshVertices){
             vertices.Add(GO.transform.TransformPoint(vertex));
         }
 
@@ -105,12 +112,12 @@ public class ShadowProjection : MonoBehaviour{
         for (int i = 1; i < vertices.Length; i++) {
             gotDuplicate = false;
             for (int j = 0; j < meshVertices.Count; j++) {
-                if (vertices[i] == meshVertices[j]) {
+                if(vertices[i] == meshVertices[j]){
                     gotDuplicate = true;
                     break;
                 }
             }
-            if (!gotDuplicate) {
+            if (!gotDuplicate){
                 meshVertices.Add(vertices[i]);
             }
         }
@@ -119,7 +126,7 @@ public class ShadowProjection : MonoBehaviour{
     }
 
     //Prototypy
-    Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Vector3 angles) {
+    Vector3 RotatePointAroundPivot(Vector3 point , Vector3 pivot , Vector3 angles) {
         Vector3 dir = point - pivot; // get point direction relative to pivot
         dir = Quaternion.Euler(angles) * dir; // rotate it
         point = dir + pivot; // calculate rotated point
@@ -256,74 +263,57 @@ public class ShadowProjection : MonoBehaviour{
         return determinant;
     }
 
-    List<Vector3> FindCenter(List<Vector3> vertices) {
-        /*Not really the center, but a simple algorithm with few computations*/
-        Vector3 center = Vector3.zero;
+    ///////////////////////////////////////////////////////////
 
-        for (int i = 0; i < vertices.Count; i++) {
-            center.x += vertices[i].x;
-            center.y += vertices[i].y;
-        }
-        center.x /= vertices.Count;
-        center.y /= vertices.Count;
-        center.z = vertices[0].z;
-
-        vertices.Add(center);
-
-        return vertices;
-    }
-
-    void GenerateMesh(GameObject realWorldObject, List<Vector3> shadowVertices) {
-        //float height = shadowVertices[1].y;
-        int halfVert = shadowVertices.Count / 2;
+    void GenerateMesh(GameObject realWorldObject, List<Vector3> shadowVertices){
+        float height = shadowVertices[1].y;
+        // Compute the center point of the polygon both on the ground, and at height
+        // Add center vertices to end of list
+        Vector3 center = findCenter(shadowVertices);
+        //shadowVertices.Add(center);
+        Vector3 raisedCenter = center;
+        raisedCenter.y += height;
+        //shadowVertices.Add(raisedCenter);
 
         List<int> tris = new List<int>();
         // Convert vertices to array for mesh
         Vector3[] vertices = shadowVertices.ToArray();
 
-        //First face of the polygon
-        for (int i = 0; i < halfVert - 1; i++) {
-            tris.Add(i);
-            if (i != halfVert - 2) {
-                tris.Add(i + 1);
+        // Do the triangles for the roof and the floor of the mesh
+        // Roof points are at odd indeces
+        for (int j = vertices.Length - 3; j >= 0; j--) {
+            // Add the point
+            tris.Add(j);
+            // Check for wrap around
+            if (j - 2 >= 0) {
+                tris.Add(j - 2);
             }
             else {
-                tris.Add(0);
+                // If wrap around, add the first vertex
+                int diff = j - 2;
+                tris.Add(vertices.Length - 2 + diff);
             }
-            tris.Add(halfVert - 1);
+            // Check if its at ground or mesh height level, choose proper center point
+            if (j % 2 == 0) {
+                tris.Add(vertices.Length - 2);
+            }
+            else {
+                tris.Add(vertices.Length - 1);
+            }
         }
 
-        //Junction between the faces
-        for (int i = 0; i < halfVert - 1; i++) {
-            //First half of the junction
-            tris.Add(i);
-
-            int edgeVertex = 0;
-            if (i != halfVert - 2) {
-                tris.Add(i + 1);
-                edgeVertex = i + 1;
+        // Do triangles which connect roof to ground
+        for (int j = vertices.Length - 3; j >= 2; j--) {
+            if (j % 2 == 1) {
+                tris.Add(j);
+                tris.Add(j - 1);
+                tris.Add(j - 2);
             }
             else {
-                tris.Add(0);
+                tris.Add(j);
+                tris.Add(j - 2);
+                tris.Add(j - 1);
             }
-            tris.Add(halfVert + i);
-
-            //Second half of the junction
-            tris.Add(halfVert + i);
-            tris.Add(edgeVertex);
-            tris.Add(edgeVertex + halfVert);
-        }
-
-        //Second face of the polygon; just in case
-        for (int i = halfVert; i < vertices.Length - 1; i++) {
-            tris.Add(i);
-            if (i != vertices.Length - 2) {
-                tris.Add(i + 1);
-            }
-            else {
-                tris.Add(0);
-            }
-            tris.Add(vertices.Length - 1);
         }
 
         int[] triangles = tris.ToArray();
@@ -355,8 +345,17 @@ public class ShadowProjection : MonoBehaviour{
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
 
-        //Layer 11  are shadow objects
-        shadowObject.layer = 11;
         shadowObject.AddComponent<MeshCollider>();
+    }
+
+    // Find the center X-Z position of the polygon.
+    Vector3 findCenter(List<Vector3> verts) {
+        Vector3 center = Vector3.zero;
+        // Only need to check every other spot since the odd indexed vertices are in the air, but have same XZ as previous
+        for (int i = 0; i < verts.Count; i += 2) {
+            center += verts[i];
+        }
+        return center / (verts.Count / 2);
+
     }
 }
