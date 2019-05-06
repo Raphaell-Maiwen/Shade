@@ -302,7 +302,6 @@ GameObject:
   - component: {fileID: 5530419305432001614}
   - component: {fileID: 3994140092882374464}
   - component: {fileID: 7593859526938755276}
-  - component: {fileID: 4469157054778504806}
   m_Layer: 0
   m_Name: Trash
   m_TagString: Untagged
@@ -372,17 +371,4 @@ MonoBehaviour:
   isASurface: 0
   canBeStacked: 0
   hasAnObjectOn: 0
---- !u!114 &4469157054778504806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8532415114586214903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92ec5c926c8220746abd3c20326d80db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotatingTime: 1
-  rotationCycle: 
+  isFalling: 0
