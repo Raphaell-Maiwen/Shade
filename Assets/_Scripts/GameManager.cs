@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour {
     public Avatar avatarScript;
-    public ShadowCharacter shadowCharacterScript;
+    public ShadeAnimated shadowCharacterScript;
 
     public GameObject mainCamera;
     public GameObject platformingCamera;

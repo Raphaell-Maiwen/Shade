@@ -11,6 +11,8 @@ public class ShadeAnimated : MonoBehaviour
 
     public Animator anim;
 
+    public GameObject[] shadeSprite;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -50,9 +52,22 @@ public class ShadeAnimated : MonoBehaviour
 
     public void Run()
     {
-        transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * speed * Time.deltaTime);
+        float horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
         anim.SetBool("isRunning", true);
 
+        Quaternion rotation = Quaternion.identity;
+
+        if (horizontalInput > 0) {
+            rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else {
+            rotation = Quaternion.Euler(0, 180, 0);
+        }
+
+        for (int i = 0; i < shadeSprite.Length; i++) {
+            shadeSprite[i].transform.rotation = rotation;
+        }
     }
 
     public void Jump()
