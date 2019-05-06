@@ -789,7 +789,7 @@ PrefabInstance:
     - target: {fileID: 8653644543325558545, guid: 2066f09296f0c244e809261332abbd64,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653644543325558556, guid: 2066f09296f0c244e809261332abbd64,
         type: 3}
@@ -859,7 +859,7 @@ PrefabInstance:
     - target: {fileID: 8653644543325558547, guid: 2066f09296f0c244e809261332abbd64,
         type: 3}
       propertyPath: far clip plane
-      value: 1013.87
+      value: 1672.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2066f09296f0c244e809261332abbd64, type: 3}
@@ -1397,7 +1397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433675708}
   m_LocalRotation: {x: 0.09454266, y: 0, z: 0, w: 0.9955208}
-  m_LocalPosition: {x: 2, y: 6.17, z: -12.688614}
+  m_LocalPosition: {x: 2, y: 6.17, z: -12.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
