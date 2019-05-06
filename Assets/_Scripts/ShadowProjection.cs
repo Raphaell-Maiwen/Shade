@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ShadowProjection : MonoBehaviour{
+public class ShadowProjection : MonoBehaviour {
     GameObject[] objectsToProject;
 
     //The real world object as the key, the shadow object as the value
@@ -296,8 +296,6 @@ public class ShadowProjection : MonoBehaviour{
         //Junction between the faces
         for (int i = 0; i < halfVert - 1; i++) {
             //First half of the junction
-            tris.Add(i);
-
             int edgeVertex = 0;
             if (i != halfVert - 2) {
                 tris.Add(i + 1);
@@ -306,23 +304,28 @@ public class ShadowProjection : MonoBehaviour{
             else {
                 tris.Add(0);
             }
+            tris.Add(i);
             tris.Add(halfVert + i);
+
+
 
             //Second half of the junction
             tris.Add(halfVert + i);
-            tris.Add(edgeVertex);
             tris.Add(edgeVertex + halfVert);
+            tris.Add(edgeVertex);
         }
+
 
         //Second face of the polygon; just in case
         for (int i = halfVert; i < vertices.Length - 1; i++) {
-            tris.Add(i);
             if (i != vertices.Length - 2) {
                 tris.Add(i + 1);
             }
             else {
-                tris.Add(0);
+                tris.Add(halfVert);
             }
+
+            tris.Add(i);
             tris.Add(vertices.Length - 1);
         }
 
