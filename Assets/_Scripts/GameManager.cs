@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour {
 
     public AudioSource elliotTheme;
 
+    GameObject player;
+
 	void Awake () {
         avatarScript.enabled = true;
         shadowCharacterScript.enabled = false;
@@ -31,6 +33,8 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < projectedObjects.Length; i++) {
             projectedObjects[i].transform.hasChanged = false;
         }
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 	
 	void Update () {
@@ -45,7 +49,7 @@ public class GameManager : MonoBehaviour {
         }
 
         //Switch between 3D and 2D worlds
-        if (Input.GetKeyDown(KeyCode.Tab)) {
+        if (Input.GetButtonDown("Switch")) {
             avatarScript.enabled = !avatarScript.enabled;
             shadowCharacterScript.enabled = !shadowCharacterScript.enabled;
 
@@ -58,9 +62,12 @@ public class GameManager : MonoBehaviour {
                         GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.ShadowsOnly;
                     }
                     else {
-                        GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
+                        //GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
+                        GO.SetActive(false);
                     }
                 }
+
+                player.SetActive(false);
             }
             else {
                 foreach (GameObject GO in renderedObjects) {
@@ -68,9 +75,12 @@ public class GameManager : MonoBehaviour {
                         GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.On;
                     }
                     else {
-                        GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
+                        //GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
+                        GO.SetActive(true);
                     }
                 }
+
+                player.SetActive(true);
             }
         }
 	}
@@ -82,7 +92,7 @@ public class GameManager : MonoBehaviour {
 
         foreach (MeshRenderer rend in allRenderersFromTheScene) {
             //The layer Wall is the 10th layer
-            if (rend.gameObject.layer != 10 && rend.gameObject.layer != 11 && rend.gameObject.layer != 13) {
+            if (rend.gameObject.layer != 10 && rend.gameObject.layer != 11 && rend.gameObject.layer != 12 && rend.gameObject.layer != 13) {
                 objectsToProject.Add(rend.gameObject);
             }
         }
