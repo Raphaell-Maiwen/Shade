@@ -62,7 +62,6 @@ public class GameManager : MonoBehaviour {
                         GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.ShadowsOnly;
                     }
                     else {
-                        //GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
                         GO.SetActive(false);
                     }
                 }
@@ -75,7 +74,6 @@ public class GameManager : MonoBehaviour {
                         GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.On;
                     }
                     else {
-                        //GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
                         GO.SetActive(true);
                     }
                 }
