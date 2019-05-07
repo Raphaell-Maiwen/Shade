@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShadeAnimated : MonoBehaviour
-{
+public class ShadeAnimated : MonoBehaviour {
     public float speed;
     public float jumpVelocity;
 
@@ -13,46 +12,42 @@ public class ShadeAnimated : MonoBehaviour
 
     public GameObject[] shadeSprite;
 
-    void Awake()
-    {
+    //public float velocity;
+
+    void Awake() {
         rb = GetComponent<Rigidbody>();
     }
 
-    private void Start()
-    {
+    private void Start() {
         anim = GetComponent<Animator>();
         anim.SetBool("isRunning", false);
     }
 
-    void Update()
-    {
-        ManageMovement();
+    void Update() {
+        //velocity = rb.velocity.y;
 
-        
-    }
+        float horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
 
-    public void ManageMovement()
-    {
-        if (Input.GetAxis("Horizontal") !=0)
-        {
-            Run();
+        if (Input.GetAxis("Horizontal") != 0) {
+            Run(horizontalInput);
         }
-
-        if (Input.GetAxis("Horizontal") == 0)
-        {
+        else {
             anim.SetBool("isRunning", false);
         }
 
-        print(rb.velocity.y);
-        if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.y < 0.0001f && rb.velocity.y > -0.0001f)
-        {
-            Jump();
+
+        if (Input.GetButtonDown("Jump")) {
+            print(rb.velocity.y);
+        }
+
+        if (Input.GetButtonDown("Jump") && rb.velocity.y < 0.005f && rb.velocity.y > -0.005f) {
+            rb.velocity = jumpVelocity * Vector3.up;
+            anim.SetTrigger("isJumping");
         }
     }
 
-    public void Run()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
+    public void Run(float horizontalInput) {
         transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
         anim.SetBool("isRunning", true);
 
@@ -68,11 +63,5 @@ public class ShadeAnimated : MonoBehaviour
         for (int i = 0; i < shadeSprite.Length; i++) {
             shadeSprite[i].transform.rotation = rotation;
         }
-    }
-
-    public void Jump()
-    {
-        rb.velocity = jumpVelocity * Vector3.up;
-        anim.SetTrigger("isJumping");
     }
 }

@@ -62,7 +62,7 @@ public class ShadowProjection : MonoBehaviour {
 
         for (int i = 0; i < shadowVerticesCount; i++) {
             Vector3 newVertex = shadowVertices[i];
-            newVertex.z -= 1;
+            newVertex.z -= 2;
             shadowVertices.Add(newVertex);
         }
 
