@@ -36,6 +36,11 @@ public class ShadeAnimated : MonoBehaviour {
             anim.SetBool("isRunning", false);
         }
 
+
+        if (Input.GetButtonDown("Jump")) {
+            print(rb.velocity.y);
+        }
+
         if (Input.GetButtonDown("Jump") && rb.velocity.y < 0.005f && rb.velocity.y > -0.005f) {
             rb.velocity = jumpVelocity * Vector3.up;
             anim.SetTrigger("isJumping");

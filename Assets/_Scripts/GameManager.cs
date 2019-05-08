@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public Avatar avatarScript;
@@ -18,8 +17,6 @@ public class GameManager : MonoBehaviour {
     public AudioSource elliotTheme;
 
     GameObject player;
-
-    public string nextLevel;
 
 	void Awake () {
         avatarScript.enabled = true;
@@ -115,11 +112,5 @@ public class GameManager : MonoBehaviour {
         }
 
         return objectsToProject.ToArray();
-    }
-
-    public void NextLevel() {
-        shadowCharacterScript.enabled = false;
-        avatarScript.enabled = false;
-        SceneManager.LoadScene(nextLevel);
     }
 }
