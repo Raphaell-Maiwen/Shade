@@ -2130,6 +2130,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4c36a79ecd98ee41b66b2b2c6ab1f79, type: 3}
+--- !u!1 &2029871681 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6074165724278794895, guid: a4c36a79ecd98ee41b66b2b2c6ab1f79,
+    type: 3}
+  m_PrefabInstance: {fileID: 2029871680}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2029871682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029871681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348ad400321e6ff4c9d33e29522dff08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Theme
+    clip: {fileID: 8300000, guid: 7725b22a668b25941ae4cb1da3afe473, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
 --- !u!1001 &2124841114
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Key : MonoBehaviour
-{
+public class Key : MonoBehaviour{
     public Animator keyAnim;
 
     private void OnTriggerEnter(Collider col) {
