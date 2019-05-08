@@ -19,6 +19,4 @@ public class KeyReceived : MonoBehaviour
         keyAnim.SetTrigger("shade_Wins");
 
     }
-
-
 }
