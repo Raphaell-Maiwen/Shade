@@ -939,7 +939,7 @@ GameObject:
   m_Layer: 0
   m_Name: Furniture
   m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1032,6 +1032,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4872064601992096045, guid: 91dc44cef792b5c4cbfac9c56311ad0e,
+        type: 3}
+      propertyPath: canBeHeld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4872064601317767906, guid: 91dc44cef792b5c4cbfac9c56311ad0e,
         type: 3}
       propertyPath: m_IsActive
@@ -1071,11 +1076,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4872064601992096045, guid: 91dc44cef792b5c4cbfac9c56311ad0e,
-        type: 3}
-      propertyPath: canBeHeld
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91dc44cef792b5c4cbfac9c56311ad0e, type: 3}
@@ -2162,6 +2162,14 @@ PrefabInstance:
     - target: {fileID: 42958878, guid: 8b004d7c82e7cb748a2b1a5d4cdfd210, type: 3}
       propertyPath: m_LocalScale.x
       value: 64.55253
+      objectReference: {fileID: 0}
+    - target: {fileID: 42958878, guid: 8b004d7c82e7cb748a2b1a5d4cdfd210, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.299
+      objectReference: {fileID: 0}
+    - target: {fileID: 42958878, guid: 8b004d7c82e7cb748a2b1a5d4cdfd210, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 12.164894
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b004d7c82e7cb748a2b1a5d4cdfd210, type: 3}
