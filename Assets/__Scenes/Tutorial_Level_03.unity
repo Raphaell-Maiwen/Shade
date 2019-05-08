@@ -2961,12 +2961,25 @@ PrefabInstance:
     - target: {fileID: 3075029329676157302, guid: 13302b8ef9ada504d95ed95a90af33d7,
         type: 3}
       propertyPath: speed
+<<<<<<< HEAD
       value: 4
+=======
+      value: 3
+>>>>>>> cdaf49f7ef2454e2bd142c0ed3d0d7be4b48a2a5
       objectReference: {fileID: 0}
     - target: {fileID: 3075029329676157302, guid: 13302b8ef9ada504d95ed95a90af33d7,
         type: 3}
       propertyPath: jumpVelocity
+<<<<<<< HEAD
       value: 4.25
+=======
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075029329676157307, guid: 13302b8ef9ada504d95ed95a90af33d7,
+        type: 3}
+      propertyPath: speed
+      value: 3
+>>>>>>> cdaf49f7ef2454e2bd142c0ed3d0d7be4b48a2a5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13302b8ef9ada504d95ed95a90af33d7, type: 3}
