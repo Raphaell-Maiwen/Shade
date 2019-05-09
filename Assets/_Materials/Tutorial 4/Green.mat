@@ -7,15 +7,16 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wood 4
+  m_Name: Green
   m_Shader: {fileID: 4800000, guid: 78402b192a44dec43b0c9e7968b8afe5, type: 3}
   m_ShaderKeywords: OUTLINES TCP2_DISABLE_WRAPPED_LIGHT TCP2_RAMPTEXT TCP2_STYLIZED_FRESNEL
-    TCP2_ZSMOOTH_ON
+    TCP2_ZSMOOTH_ON _ALPHATEST_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2450
+  stringTagMap:
+    RenderType: TransparentCutout
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -53,7 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ac9ddcd8ad91b39429450bd27deb0247, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -89,7 +90,7 @@ Material:
     - _BaseLight: 0.35
     - _BumpScale: 1
     - _Cull: 2
-    - _Cutoff: 0
+    - _Cutoff: 0.77
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendOutline: 10
@@ -100,7 +101,7 @@ Material:
     - _Glossiness: 0.1
     - _GlossyReflections: 1
     - _Metallic: 0
-    - _Mode: 0
+    - _Mode: 1
     - _Occlusion: 7.5
     - _OcclusionStrength: 1
     - _Offset1: 0
@@ -130,7 +131,7 @@ Material:
     - _TCP2_ZSMOOTH_ON: 0
     - _TexLod: 3.38
     - _ThresholdScale: 10
-    - _ThresholdStrength: 1
+    - _ThresholdStrength: 0.675
     - _UVSec: 0
     - _WindQuality: 0
     - _ZSmooth: -0.5
@@ -138,13 +139,13 @@ Material:
     - __dummy__: 0
     - __outline_gui_dummy__: 0
     m_Colors:
-    - _Color: {r: 0.5849056, g: 0.5475673, b: 0.504895, a: 1}
+    - _Color: {r: 0.33922213, g: 0.9339623, b: 0.7169038, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 0.785, g: 0.785, b: 0.785, a: 1}
+    - _HColor: {r: 0.9732427, g: 1, b: 0.495283, a: 1}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _OutlineColor: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
-    - _SColor: {r: 0.195, g: 0.195, b: 0.195, a: 1}
+    - _SColor: {r: 0.102794595, g: 0.11658717, b: 0.20754719, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}

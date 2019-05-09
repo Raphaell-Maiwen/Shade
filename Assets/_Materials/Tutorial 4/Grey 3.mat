@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wood 4
+  m_Name: Grey 3
   m_Shader: {fileID: 4800000, guid: 78402b192a44dec43b0c9e7968b8afe5, type: 3}
   m_ShaderKeywords: OUTLINES TCP2_DISABLE_WRAPPED_LIGHT TCP2_RAMPTEXT TCP2_STYLIZED_FRESNEL
     TCP2_ZSMOOTH_ON
@@ -130,7 +130,7 @@ Material:
     - _TCP2_ZSMOOTH_ON: 0
     - _TexLod: 3.38
     - _ThresholdScale: 10
-    - _ThresholdStrength: 1
+    - _ThresholdStrength: 0.675
     - _UVSec: 0
     - _WindQuality: 0
     - _ZSmooth: -0.5
@@ -138,7 +138,7 @@ Material:
     - __dummy__: 0
     - __outline_gui_dummy__: 0
     m_Colors:
-    - _Color: {r: 0.5849056, g: 0.5475673, b: 0.504895, a: 1}
+    - _Color: {r: 0.32658422, g: 0.3478342, b: 0.38679248, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HColor: {r: 0.785, g: 0.785, b: 0.785, a: 1}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
