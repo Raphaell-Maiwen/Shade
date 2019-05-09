@@ -360,6 +360,10 @@ public class ShadowProjection : MonoBehaviour {
 
         //Layer 11  are shadow objects
         shadowObject.layer = 11;
-        shadowObject.AddComponent<MeshCollider>();
+
+        MeshCollider mc = shadowObject.AddComponent<MeshCollider>();
+        mc.convex = true;
+        print(mc.convex);
+        Debug.Log("Convex!");
     }
 }

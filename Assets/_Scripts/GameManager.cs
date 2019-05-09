@@ -42,14 +42,14 @@ public class GameManager : MonoBehaviour {
 	
 	void Update () {
         //Update the shadows of all objects from all sources of light when they're moving
-        for (int i = 0; i < projectedObjects.Length; i++) {
+        /*for (int i = 0; i < projectedObjects.Length; i++) {
             if (projectedObjects[i].transform.hasChanged) {
                 for (int j = 0; j < sourcesOfLight.Length; j++) {
                     sourcesOfLight[j].UpdateShadow(projectedObjects[i]);
                 }
                 projectedObjects[i].transform.hasChanged = false;
             }
-        }
+        }*/
 
         //Switch between 3D and 2D worlds
         if (Input.GetButtonDown("Switch")) {
@@ -60,6 +60,12 @@ public class GameManager : MonoBehaviour {
             platformingCamera.SetActive(!platformingCamera.activeInHierarchy);
 
             if (platformingCamera.activeInHierarchy) {
+                for (int i = 0; i < projectedObjects.Length; i++) {
+                    for (int j = 0; j < sourcesOfLight.Length; j++) {
+                        sourcesOfLight[j].UpdateShadow(projectedObjects[i]);
+                    }
+                }
+
                 foreach (GameObject GO in renderedObjects) {
                     if (GO.layer != 12) {
                         GO.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.ShadowsOnly;
