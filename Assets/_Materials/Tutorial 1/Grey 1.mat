@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Grey 1
-  m_Shader: {fileID: 4800000, guid: 78402b192a44dec43b0c9e7968b8afe5, type: 3}
+  m_Shader: {fileID: 4800000, guid: 99bb36e9d2c76874e8e8e2baed6debca, type: 3}
   m_ShaderKeywords: OUTLINES TCP2_DISABLE_WRAPPED_LIGHT TCP2_RAMPTEXT TCP2_STYLIZED_FRESNEL
     TCP2_ZSMOOTH_ON
   m_LightmapFlags: 4
@@ -110,9 +110,11 @@ Material:
     - _RampSmooth: 0.4
     - _RampSmoothAdd: 0.4
     - _RampThreshold: 0.5
+    - _RimAmount: 0.716
     - _RimMax: 0.89
     - _RimMin: 0.42
     - _RimStrength: 0.2
+    - _RimThreshold: 0.1
     - _Shininess: 0.078125
     - _SmoothnessTextureChannel: 0
     - _SpecBlend: 1
@@ -138,13 +140,15 @@ Material:
     - __dummy__: 0
     - __outline_gui_dummy__: 0
     m_Colors:
-    - _Color: {r: 0.7471965, g: 0.7747808, b: 0.8207547, a: 1}
+    - _AmbientColor: {r: 0.8228907, g: 0.8341491, b: 0.8679245, a: 1}
+    - _Color: {r: 0.50671947, g: 0.52611893, b: 0.5566038, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HColor: {r: 0.785, g: 0.785, b: 0.785, a: 1}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _OutlineColor: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
-    - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
+    - _RimColor: {r: 0.5209957, g: 0.5647117, b: 0.637597, a: 0.6}
     - _SColor: {r: 0.195, g: 0.195, b: 0.195, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _SpecularColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
