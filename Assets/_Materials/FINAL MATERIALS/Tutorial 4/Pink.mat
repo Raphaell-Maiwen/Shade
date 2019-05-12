@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Pink
-  m_Shader: {fileID: 4800000, guid: 78402b192a44dec43b0c9e7968b8afe5, type: 3}
+  m_Shader: {fileID: 4800000, guid: 99bb36e9d2c76874e8e8e2baed6debca, type: 3}
   m_ShaderKeywords: OUTLINES TCP2_DISABLE_WRAPPED_LIGHT TCP2_OUTLINE_TEXTURED TCP2_RAMPTEXT
     TCP2_STYLIZED_FRESNEL TCP2_ZSMOOTH_ON
   m_LightmapFlags: 4
@@ -110,9 +110,11 @@ Material:
     - _RampSmooth: 0.4
     - _RampSmoothAdd: 0.4
     - _RampThreshold: 0.5
+    - _RimAmount: 0.29
     - _RimMax: 0.89
     - _RimMin: 0.42
     - _RimStrength: 0.2
+    - _RimThreshold: 0.46
     - _Shininess: 0.078125
     - _SmoothnessTextureChannel: 0
     - _SpecBlend: 1
@@ -138,6 +140,7 @@ Material:
     - __dummy__: 0
     - __outline_gui_dummy__: 0
     m_Colors:
+    - _AmbientColor: {r: 0.03789291, g: 0.03789291, b: 0.03789291, a: 1}
     - _Color: {r: 0.9529412, g: 0.79607844, b: 0.7882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HColor: {r: 0.9339623, g: 0.887468, b: 0.69166076, a: 1}
@@ -146,5 +149,6 @@ Material:
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
     - _SColor: {r: 0.32137772, g: 0.4339623, b: 0.4339623, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _SpecularColor: {r: 0.7852025, g: 0.7852025, b: 0.7852025, a: 1}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
