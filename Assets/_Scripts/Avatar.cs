@@ -34,7 +34,7 @@ public class Avatar : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update(){
+    void Update() {
         inputVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         transform.position += inputVector.normalized * speed * Time.deltaTime;
@@ -91,9 +91,9 @@ public class Avatar : MonoBehaviour {
     }
 
     private void PlaceObject() {
-        print("before");
+        objectToHold.transform.SetParent(null);
+
         objectToHold.GetComponent<Rigidbody>().isKinematic = false;
-        print("after");
 
         objectToHold.GetComponent<MoveObject>().isMoving(false);
         isHolding = false;
@@ -105,18 +105,18 @@ public class Avatar : MonoBehaviour {
 
             objectToBePlacedOn.GetComponentInParent<MoveObject>().hasAnObjectOn = true;
         }
-        else {
-            objectToHold.transform.SetParent(null);
-        }
+
+        print(objectToHold.transform.parent.name + " " );
 
         objectToHold.GetComponent<MoveObject>().isFalling = true;
         objectToHold.GetComponent<Rigidbody>().constraints = ~RigidbodyConstraints.FreezePositionY;
+        readyToHold = true;
     }
 
-    private void OnTriggerEnter(Collider other){
+    private void OnTriggerEnter(Collider other) {
         GameObject otherGO = other.gameObject;
         bool interactive = false;
-        
+
         //if (!readyToRotate && other.gameObject.tag == "RealWorld") {
         if (otherGO.GetComponent<Rotate>() != null && otherGO.GetComponent<Rotate>().rotationCycle.Length > 0) {
             objectToRotate = otherGO;
@@ -157,15 +157,13 @@ public class Avatar : MonoBehaviour {
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
+    private void OnTriggerStay(Collider other) {
         /*if (!readyToRotate && other.gameObject.tag == "RealWorld") {
             objectToRotate = other.gameObject;
         }*/
     }
 
-    private void OnTriggerExit(Collider other)
-    {
+    private void OnTriggerExit(Collider other) {
         GameObject otherGO = other.gameObject;
 
         //print("Not ready to rotate");
