@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Surface
+  - Both
+  - Stackable
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - ShadowObjects
   - RealWorldPlayer
   - ShadowPlayer
-  - 
+  - FallingObject
   - 
   - 
   - 

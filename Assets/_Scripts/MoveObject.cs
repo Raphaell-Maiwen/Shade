@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveObject : MonoBehaviour
-{
+public class MoveObject : MonoBehaviour {
     public bool canBeHeld;
     public bool isASurface;
     public bool canBeStacked;
@@ -36,20 +35,32 @@ public class MoveObject : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision coll) {
-        if (isFalling) {
+        if (isFalling && coll.gameObject.tag != "Player") {
             isFalling = false;
-            //rb.constraints = ~RigidbodyConstraints.FreezePositionY;
+
+            //Layer 14 are the falling objects
+            gameObject.layer = 0;
             rb.isKinematic = true;
 
-            /*for (int i = 0; i < children.Count; i++) {
-                children[i].GetComponent<BoxCollider>().isTrigger = false;
-            }*/
+            for (int i = 0; i < children.Count; i++) {
+                children[i].layer = 9;
+            }
         }
     }
 
     public void isMoving(bool isTrigger) {
         for (int i = 0; i < children.Count; i++) {
             children[i].GetComponent<BoxCollider>().isTrigger = isTrigger;
+        }
+
+        GetComponent<Rigidbody>().isKinematic = isTrigger;
+
+        GetComponent<Rigidbody>().useGravity = !isTrigger;
+
+        if (!isTrigger) {
+            for (int i = 0; i < children.Count; i++) {
+                children[i].layer = 14;
+            }
         }
     }
 }

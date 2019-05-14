@@ -363,7 +363,5 @@ public class ShadowProjection : MonoBehaviour {
 
         MeshCollider mc = shadowObject.AddComponent<MeshCollider>();
         mc.convex = true;
-        print(mc.convex);
-        Debug.Log("Convex!");
     }
 }
