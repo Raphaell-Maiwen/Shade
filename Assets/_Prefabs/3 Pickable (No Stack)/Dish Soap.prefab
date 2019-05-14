@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1775999165009361732}
   - component: {fileID: 1775999165009361733}
   - component: {fileID: 5794410248610386278}
+  - component: {fileID: 98513043}
   m_Layer: 0
   m_Name: Dish Soap
   m_TagString: Untagged
@@ -26,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775999165009361731}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.21, y: 1.12, z: 1}
   m_Children:
   - {fileID: 3978491598284407865}
   - {fileID: 1775999165116271314}
@@ -76,8 +77,25 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.9776119, z: 1}
+  m_Size: {x: 1.99, y: 1.37, z: 2.36}
   m_Center: {x: 0, y: 0.10074574, z: 0}
+--- !u!114 &98513043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775999165009361731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbc1962589bd22a4984f1f62b4135568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBeHeld: 1
+  isASurface: 0
+  canBeStacked: 0
+  hasAnObjectOn: 0
+  isFalling: 0
 --- !u!1 &8258340402164235854
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,13 +122,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8258340402164235854}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.34970036, z: -0, w: 0.9368617}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1775999165009361730}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -40.938004, z: 0}
 --- !u!33 &3967063112496741696
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -186,7 +204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9887b20170e52914692061bfde29ff72, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9887b20170e52914692061bfde29ff72, type: 3}
       propertyPath: m_LocalPosition.z
@@ -194,19 +212,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9887b20170e52914692061bfde29ff72, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.082873926
+      value: -0.66099197
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9887b20170e52914692061bfde29ff72, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.70223355
+      value: -0.25117674
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9887b20170e52914692061bfde29ff72, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.70223355
+      value: -0.2511765
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9887b20170e52914692061bfde29ff72, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.082873926
+      value: 0.66099197
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9887b20170e52914692061bfde29ff72, type: 3}
       propertyPath: m_RootOrder
@@ -222,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9887b20170e52914692061bfde29ff72, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 166.539
+      value: -41.614002
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9887b20170e52914692061bfde29ff72, type: 3}
       propertyPath: m_LocalScale.x
@@ -239,7 +257,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 9887b20170e52914692061bfde29ff72, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9e64a36c452b6c2429c582b2ffd74f79, type: 2}
+      objectReference: {fileID: 2100000, guid: c549a06f6fe189e42b5516d77aae9a9c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9887b20170e52914692061bfde29ff72, type: 3}
 --- !u!4 &1775999165116271314 stripped
