@@ -38,9 +38,16 @@ public class MoveObject : MonoBehaviour
     void OnCollisionEnter(Collision coll) {
         if (isFalling && coll.gameObject.tag != "Player") {
             isFalling = false;
+
+            //Layer 14 are the falling objects
+            gameObject.layer = 0;
             //rb.constraints = ~RigidbodyConstraints.FreezePositionY;
             rb.isKinematic = true;
-            print("tg");
+
+            for (int i = 0; i < children.Count; i++) {
+                children[i].layer = 9;
+            }
+
             /*for (int i = 0; i < children.Count; i++) {
                 children[i].GetComponent<BoxCollider>().isTrigger = false;
             }*/
@@ -56,5 +63,11 @@ public class MoveObject : MonoBehaviour
         print(isTrigger);
 
         GetComponent<Rigidbody>().useGravity = !isTrigger;
+
+        if (!isTrigger) {
+            for (int i = 0; i < children.Count; i++) {
+                children[i].layer = 14;
+            }
+        }
     }
 }
