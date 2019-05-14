@@ -63,9 +63,10 @@ public class Avatar : MonoBehaviour {
             }
             else {
                 animator.SetBool("isHolding", false);
-                objectToHold.GetComponent<MoveObject>().isMoving(false);
-                isHolding = false;
-                PlaceObject();
+
+                if (objectToHold != null) {
+                    PlaceObject();
+                }
             }
         }
     }
@@ -84,14 +85,19 @@ public class Avatar : MonoBehaviour {
         readyToHold = false;
         isHolding = true;
 
-        objectToHold.GetComponent<Rigidbody>().useGravity = false;
-
         objectToBePlacedOn = null;
         readyToPlace = false;
         animator.SetBool("isHolding", true);
     }
 
     private void PlaceObject() {
+        print("before");
+        objectToHold.GetComponent<Rigidbody>().isKinematic = false;
+        print("after");
+
+        objectToHold.GetComponent<MoveObject>().isMoving(false);
+        isHolding = false;
+
         if (readyToPlace && objectToHold.GetComponent<MoveObject>().canBeStacked) {
             objectToHold.transform.position = newObjectPos;
             objectToHold.transform.SetParent(objectToBePlacedOn.transform);
@@ -104,8 +110,6 @@ public class Avatar : MonoBehaviour {
         }
 
         objectToHold.GetComponent<MoveObject>().isFalling = true;
-        objectToHold.GetComponent<Rigidbody>().isKinematic = false;
-        objectToHold.GetComponent<Rigidbody>().useGravity = true;
         objectToHold.GetComponent<Rigidbody>().constraints = ~RigidbodyConstraints.FreezePositionY;
     }
 
