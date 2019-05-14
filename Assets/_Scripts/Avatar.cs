@@ -25,8 +25,6 @@ public class Avatar : MonoBehaviour {
 
     public Animator animator;
 
-    public Transform objectAnchor;
-
     void Awake() {
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
@@ -59,45 +57,35 @@ public class Avatar : MonoBehaviour {
         else if (Input.GetButtonDown("Pickup")) {
             print("Pressing E " + readyToHold);
             if (readyToHold) {
-                TakeObject();
+                objectToHold.GetComponent<MoveObject>().isMoving(true);
+
+                if (objectToHold.transform.parent != null) {
+                    objectToHold.GetComponentInParent<MoveObject>().hasAnObjectOn = false;
+                }
+
+                print("Starting to hold");
+                objectToHold.transform.SetParent(this.transform);
+                readyToHold = false;
+                isHolding = true;
+
+                objectToHold.GetComponent<Rigidbody>().useGravity = false;
+                /*objectToHold.GetComponent<Rigidbody>().constraints =
+                    ~RigidbodyConstraints.FreezePositionY;*/
+
+                objectToBePlacedOn = null;
+                readyToPlace = false;
+                animator.SetBool("isHolding", true);
             }
             else {
                 animator.SetBool("isHolding", false);
-
-                if (objectToHold != null) {
-                    PlaceObject();
-                }
+                objectToHold.GetComponent<MoveObject>().isMoving(false);
+                isHolding = false;
+                PlaceObject();
             }
         }
     }
 
-    private void TakeObject() {
-        objectToHold.GetComponent<MoveObject>().isMoving(true);
-
-        if (objectToHold.transform.parent != null) {
-            objectToHold.GetComponentInParent<MoveObject>().hasAnObjectOn = false;
-        }
-
-        objectToHold.transform.SetParent(null);
-        objectToHold.transform.position = objectAnchor.position;
-
-        objectToHold.transform.SetParent(this.transform);
-        readyToHold = false;
-        isHolding = true;
-
-        objectToBePlacedOn = null;
-        readyToPlace = false;
-        animator.SetBool("isHolding", true);
-    }
-
     private void PlaceObject() {
-        print("before");
-        objectToHold.GetComponent<Rigidbody>().isKinematic = false;
-        print("after");
-
-        objectToHold.GetComponent<MoveObject>().isMoving(false);
-        isHolding = false;
-
         if (readyToPlace && objectToHold.GetComponent<MoveObject>().canBeStacked) {
             objectToHold.transform.position = newObjectPos;
             objectToHold.transform.SetParent(objectToBePlacedOn.transform);
@@ -110,6 +98,8 @@ public class Avatar : MonoBehaviour {
         }
 
         objectToHold.GetComponent<MoveObject>().isFalling = true;
+        objectToHold.GetComponent<Rigidbody>().isKinematic = false;
+        objectToHold.GetComponent<Rigidbody>().useGravity = true;
         objectToHold.GetComponent<Rigidbody>().constraints = ~RigidbodyConstraints.FreezePositionY;
     }
 
