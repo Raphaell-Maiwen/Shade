@@ -25,6 +25,8 @@ public class Avatar : MonoBehaviour {
 
     public Animator animator;
 
+    public Transform objectAnchor;
+
     void Awake() {
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
@@ -32,7 +34,7 @@ public class Avatar : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update(){
+    void Update() {
         inputVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         transform.position += inputVector.normalized * speed * Time.deltaTime;
@@ -57,35 +59,45 @@ public class Avatar : MonoBehaviour {
         else if (Input.GetButtonDown("Pickup")) {
             print("Pressing E " + readyToHold);
             if (readyToHold) {
-                objectToHold.GetComponent<MoveObject>().isMoving(true);
-
-                if (objectToHold.transform.parent != null) {
-                    objectToHold.GetComponentInParent<MoveObject>().hasAnObjectOn = false;
-                }
-
-                print("Starting to hold");
-                objectToHold.transform.SetParent(this.transform);
-                readyToHold = false;
-                isHolding = true;
-
-                objectToHold.GetComponent<Rigidbody>().useGravity = false;
-                /*objectToHold.GetComponent<Rigidbody>().constraints =
-                    ~RigidbodyConstraints.FreezePositionY;*/
-
-                objectToBePlacedOn = null;
-                readyToPlace = false;
-                animator.SetBool("isHolding", true);
+                TakeObject();
             }
             else {
                 animator.SetBool("isHolding", false);
-                objectToHold.GetComponent<MoveObject>().isMoving(false);
-                isHolding = false;
-                PlaceObject();
+
+                if (objectToHold != null) {
+                    PlaceObject();
+                }
             }
         }
     }
 
+    private void TakeObject() {
+        objectToHold.GetComponent<MoveObject>().isMoving(true);
+
+        if (objectToHold.transform.parent != null) {
+            objectToHold.GetComponentInParent<MoveObject>().hasAnObjectOn = false;
+        }
+
+        objectToHold.transform.SetParent(null);
+        objectToHold.transform.position = objectAnchor.position;
+
+        objectToHold.transform.SetParent(this.transform);
+        readyToHold = false;
+        isHolding = true;
+
+        objectToBePlacedOn = null;
+        readyToPlace = false;
+        animator.SetBool("isHolding", true);
+    }
+
     private void PlaceObject() {
+        print("before");
+        objectToHold.GetComponent<Rigidbody>().isKinematic = false;
+        print("after");
+
+        objectToHold.GetComponent<MoveObject>().isMoving(false);
+        isHolding = false;
+
         if (readyToPlace && objectToHold.GetComponent<MoveObject>().canBeStacked) {
             objectToHold.transform.position = newObjectPos;
             objectToHold.transform.SetParent(objectToBePlacedOn.transform);
@@ -98,15 +110,13 @@ public class Avatar : MonoBehaviour {
         }
 
         objectToHold.GetComponent<MoveObject>().isFalling = true;
-        objectToHold.GetComponent<Rigidbody>().isKinematic = false;
-        objectToHold.GetComponent<Rigidbody>().useGravity = true;
         objectToHold.GetComponent<Rigidbody>().constraints = ~RigidbodyConstraints.FreezePositionY;
     }
 
-    private void OnTriggerEnter(Collider other){
+    private void OnTriggerEnter(Collider other) {
         GameObject otherGO = other.gameObject;
         bool interactive = false;
-        
+
         //if (!readyToRotate && other.gameObject.tag == "RealWorld") {
         if (otherGO.GetComponent<Rotate>() != null && otherGO.GetComponent<Rotate>().rotationCycle.Length > 0) {
             objectToRotate = otherGO;
@@ -147,15 +157,13 @@ public class Avatar : MonoBehaviour {
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
+    private void OnTriggerStay(Collider other) {
         /*if (!readyToRotate && other.gameObject.tag == "RealWorld") {
             objectToRotate = other.gameObject;
         }*/
     }
 
-    private void OnTriggerExit(Collider other)
-    {
+    private void OnTriggerExit(Collider other) {
         GameObject otherGO = other.gameObject;
 
         //print("Not ready to rotate");
