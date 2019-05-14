@@ -91,9 +91,9 @@ public class Avatar : MonoBehaviour {
     }
 
     private void PlaceObject() {
-        print("before");
+        objectToHold.transform.SetParent(null);
+
         objectToHold.GetComponent<Rigidbody>().isKinematic = false;
-        print("after");
 
         objectToHold.GetComponent<MoveObject>().isMoving(false);
         isHolding = false;
@@ -105,12 +105,12 @@ public class Avatar : MonoBehaviour {
 
             objectToBePlacedOn.GetComponentInParent<MoveObject>().hasAnObjectOn = true;
         }
-        else {
-            objectToHold.transform.SetParent(null);
-        }
+
+        print(objectToHold.transform.parent.name + " " );
 
         objectToHold.GetComponent<MoveObject>().isFalling = true;
         objectToHold.GetComponent<Rigidbody>().constraints = ~RigidbodyConstraints.FreezePositionY;
+        readyToHold = true;
     }
 
     private void OnTriggerEnter(Collider other) {
