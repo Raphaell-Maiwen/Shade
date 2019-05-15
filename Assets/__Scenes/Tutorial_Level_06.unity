@@ -1909,6 +1909,11 @@ PrefabInstance:
       propertyPath: nextLevel
       value: Tutorial_Level_04
       objectReference: {fileID: 0}
+    - target: {fileID: 6074165724278794894, guid: a4c36a79ecd98ee41b66b2b2c6ab1f79,
+        type: 3}
+      propertyPath: instructionCanvas
+      value: 
+      objectReference: {fileID: 1050460468}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4c36a79ecd98ee41b66b2b2c6ab1f79, type: 3}
 --- !u!1 &1023167200
@@ -2124,6 +2129,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f8f9598ffd9804991817149004890d, type: 3}
+--- !u!1 &1050460468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3665765048747243101, guid: a0f8f9598ffd9804991817149004890d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1050460467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1137801967
 GameObject:
   m_ObjectHideFlags: 0

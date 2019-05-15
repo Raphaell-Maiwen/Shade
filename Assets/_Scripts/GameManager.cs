@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour {
     GameObject[] projectedObjects;
     ShadowProjection[] sourcesOfLight;
 
+    public GameObject instructionCanvas;
+    public Animator instructionAnim;
+
     public AudioSource elliotTheme;
 
     GameObject player;
@@ -39,8 +42,14 @@ public class GameManager : MonoBehaviour {
 
         player = GameObject.FindGameObjectWithTag("Player");
     }
-	
-	void Update () {
+
+    private void Start()
+    {
+        instructionAnim = instructionCanvas.GetComponent<Animator>();
+        instructionAnim.SetBool("shadeTurn", false);
+    }
+
+    void Update () {
         //Update the shadows of all objects from all sources of light when they're moving
         /*for (int i = 0; i < projectedObjects.Length; i++) {
             if (projectedObjects[i].transform.hasChanged) {
@@ -58,6 +67,15 @@ public class GameManager : MonoBehaviour {
 
             mainCamera.SetActive(!mainCamera.activeInHierarchy);
             platformingCamera.SetActive(!platformingCamera.activeInHierarchy);
+
+            if (instructionAnim.GetBool("shadeTurn"))
+            {
+                instructionAnim.SetBool("shadeTurn", false);
+            }
+            else instructionAnim.SetBool("shadeTurn", true);
+
+
+
 
             if (platformingCamera.activeInHierarchy) {
                 for (int i = 0; i < projectedObjects.Length; i++) {

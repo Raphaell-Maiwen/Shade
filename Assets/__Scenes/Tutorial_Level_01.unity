@@ -1770,6 +1770,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!1 &1438416035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3665765048747243101, guid: a0f8f9598ffd9804991817149004890d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3665765048449733896}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1473641729 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1600422629, guid: 5c669f17a2f97f64483c36a2e11603cb,
@@ -2632,6 +2638,11 @@ PrefabInstance:
       propertyPath: nextLevel
       value: Tutorial_Level_02
       objectReference: {fileID: 0}
+    - target: {fileID: 6074165724278794894, guid: a4c36a79ecd98ee41b66b2b2c6ab1f79,
+        type: 3}
+      propertyPath: instructionCanvas
+      value: 
+      objectReference: {fileID: 1438416035}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4c36a79ecd98ee41b66b2b2c6ab1f79, type: 3}
 --- !u!1 &2029871681 stripped
