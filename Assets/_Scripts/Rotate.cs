@@ -24,8 +24,17 @@ public class Rotate : MonoBehaviour
     public RotationDirection[] rotationCycle;
     int rotationIndex = 0;
 
+    private GameObject actionUI;
+
     void Awake() {
         originalRotation = transform.rotation;
+
+        foreach (Transform child in transform) {
+            if (child.GetComponent<Animator>() != null) {
+                actionUI = child.gameObject;
+                break;
+            }
+        }
     }
 
     public void RotateClockwise() {
@@ -99,5 +108,11 @@ public class Rotate : MonoBehaviour
             yield return null;
         }
         isRotating = false;
+    }
+
+    public void SetUI(bool active) {
+        if (actionUI != null) {
+            actionUI.SetActive(active);
+        }
     }
 }

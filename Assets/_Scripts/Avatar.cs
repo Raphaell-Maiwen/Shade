@@ -121,14 +121,13 @@ public class Avatar : MonoBehaviour {
         GameObject otherGO = other.gameObject;
         bool interactive = false;
 
-        //if (!readyToRotate && other.gameObject.tag == "RealWorld") {
         if (otherGO.GetComponent<Rotate>() != null && otherGO.GetComponent<Rotate>().rotationCycle.Length > 0) {
-            //TODO particle effect rotation
+
+            otherGO.GetComponent<Rotate>().SetUI(true);
             objectToRotate = otherGO;
             readyToRotate = true;
             interactive = true;
         }
-        //}
 
         MoveObject moveObjectScript = otherGO.GetComponent<MoveObject>();
 
@@ -159,12 +158,6 @@ public class Avatar : MonoBehaviour {
 
     }
 
-    private void OnTriggerStay(Collider other) {
-        /*if (!readyToRotate && other.gameObject.tag == "RealWorld") {
-            objectToRotate = other.gameObject;
-        }*/
-    }
-
     private void OnTriggerExit(Collider other) {
         GameObject otherGO = other.gameObject;
 
@@ -172,6 +165,7 @@ public class Avatar : MonoBehaviour {
         if (otherGO == objectToRotate) {
             readyToRotate = false;
             objectToRotate = null;
+            otherGO.GetComponent<Rotate>().SetUI(false);
         }
         if (otherGO == objectToHold) {
             readyToHold = false;
