@@ -40,11 +40,16 @@ public class MoveObject : MonoBehaviour {
 
             //Layer 14 are the falling objects
             gameObject.layer = 0;
+            //rb.constraints = ~RigidbodyConstraints.FreezePositionY;
             rb.isKinematic = true;
 
             for (int i = 0; i < children.Count; i++) {
                 children[i].layer = 9;
             }
+
+            /*for (int i = 0; i < children.Count; i++) {
+                children[i].GetComponent<BoxCollider>().isTrigger = false;
+            }*/
         }
     }
 
@@ -54,6 +59,7 @@ public class MoveObject : MonoBehaviour {
         }
 
         GetComponent<Rigidbody>().isKinematic = isTrigger;
+        print(isTrigger);
 
         GetComponent<Rigidbody>().useGravity = !isTrigger;
 
