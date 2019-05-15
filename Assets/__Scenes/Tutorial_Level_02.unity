@@ -1463,6 +1463,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invisible_wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2355752865359482917, guid: 060e39c6f9ae07b439fab424a7bda768,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2355752865359482913, guid: 060e39c6f9ae07b439fab424a7bda768,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1947,6 +1952,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Invisible_wall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2355752865359482917, guid: 060e39c6f9ae07b439fab424a7bda768,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2355752865359482913, guid: 060e39c6f9ae07b439fab424a7bda768,
         type: 3}
@@ -4013,6 +4023,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 1189321894873580681, guid: 8b004d7c82e7cb748a2b1a5d4cdfd210,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 501593196807887005, guid: 8b004d7c82e7cb748a2b1a5d4cdfd210,
         type: 3}
       propertyPath: m_Name
@@ -5948,6 +5963,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Invisible_wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2355752865359482917, guid: 060e39c6f9ae07b439fab424a7bda768,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2355752865359482913, guid: 060e39c6f9ae07b439fab424a7bda768,
         type: 3}
