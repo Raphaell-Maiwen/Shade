@@ -88,6 +88,8 @@ public class Avatar : MonoBehaviour {
         objectToBePlacedOn = null;
         readyToPlace = false;
         animator.SetBool("isHolding", true);
+
+        objectToHold.GetComponent<MoveObject>().SetUI(false);
     }
 
     private void PlaceObject() {
@@ -121,6 +123,7 @@ public class Avatar : MonoBehaviour {
 
         //if (!readyToRotate && other.gameObject.tag == "RealWorld") {
         if (otherGO.GetComponent<Rotate>() != null && otherGO.GetComponent<Rotate>().rotationCycle.Length > 0) {
+            //TODO particle effect rotation
             objectToRotate = otherGO;
             readyToRotate = true;
             interactive = true;
@@ -131,9 +134,8 @@ public class Avatar : MonoBehaviour {
 
         if (moveObjectScript != null) {
             if (!isHolding && moveObjectScript.canBeHeld && !moveObjectScript.hasAnObjectOn) {
-                if (objectToHold != null && objectToHold.GetComponent<ParticleSystem>()) {
-                    objectToHold.GetComponent<ParticleSystem>().Clear();
-                    objectToHold.GetComponent<ParticleSystem>().Stop();
+                if (objectToHold != null) {
+                    objectToHold.GetComponent<MoveObject>().SetUI(false);
                 }
 
                 objectToHold = otherGO;
@@ -141,9 +143,8 @@ public class Avatar : MonoBehaviour {
                 interactive = true;
             }
             else if (moveObjectScript.isASurface) {
-                if (objectToBePlacedOn != null && objectToBePlacedOn.GetComponent<ParticleSystem>()) {
-                    objectToBePlacedOn.GetComponent<ParticleSystem>().Clear();
-                    objectToBePlacedOn.GetComponent<ParticleSystem>().Stop();
+                if (objectToBePlacedOn != null) {
+                    objectToBePlacedOn.GetComponent<MoveObject>().SetUI(false);
                 }
 
                 objectToBePlacedOn = otherGO;
@@ -152,11 +153,10 @@ public class Avatar : MonoBehaviour {
                 newObjectPos.y += 1;
                 interactive = true;
             }
+
+            moveObjectScript.SetUI(true);
         }
 
-        if (otherGO.GetComponent<ParticleSystem>()) {
-            otherGO.GetComponent<ParticleSystem>().Play();
-        }
     }
 
     private void OnTriggerStay(Collider other) {
@@ -176,16 +176,16 @@ public class Avatar : MonoBehaviour {
         if (otherGO == objectToHold) {
             readyToHold = false;
             objectToHold = null;
-            print("Not ready to hold");
+            otherGO.GetComponent<MoveObject>().SetUI(false);
         }
         if (otherGO == objectToBePlacedOn) {
             readyToPlace = false;
             objectToBePlacedOn = null;
         }
 
-        if (otherGO.GetComponent<ParticleSystem>()) {
+        /*if (otherGO.GetComponent<ParticleSystem>()) {
             otherGO.GetComponent<ParticleSystem>().Clear();
             otherGO.GetComponent<ParticleSystem>().Stop();
-        }
+        }*/
     }
 }

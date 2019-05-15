@@ -12,10 +12,10 @@ public class MoveObject : MonoBehaviour {
 
     [HideInInspector]
     public bool isFalling = false;
-
     private List<GameObject> children;
-
     Rigidbody rb;
+
+   public GameObject actionUI;
 
     void Awake() {
         if (this.GetComponent<ParticleSystem>()) {
@@ -30,6 +30,10 @@ public class MoveObject : MonoBehaviour {
         foreach (Transform child in transform) {
             if (child.GetComponent<BoxCollider>() && !child.GetComponent<BoxCollider>().isTrigger) {
                 children.Add(child.gameObject);
+            }
+
+            if (child.GetComponent<Animator>() != null) {
+                actionUI = child.gameObject;
             }
         }
     }
@@ -47,9 +51,7 @@ public class MoveObject : MonoBehaviour {
                 children[i].layer = 9;
             }
 
-            /*for (int i = 0; i < children.Count; i++) {
-                children[i].GetComponent<BoxCollider>().isTrigger = false;
-            }*/
+            actionUI.SetActive(true);
         }
     }
 
@@ -67,6 +69,13 @@ public class MoveObject : MonoBehaviour {
             for (int i = 0; i < children.Count; i++) {
                 children[i].layer = 14;
             }
+        }
+    }
+
+    public void SetUI(bool active) {
+        print("Set active");
+        if (actionUI != null) {
+            actionUI.SetActive(active);
         }
     }
 }

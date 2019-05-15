@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -194,6 +194,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.3267105
       objectReference: {fileID: 0}
+    - target: {fileID: 9053948807430487461, guid: 6fc4434af1178b3418a7044aeb49a4c5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.193
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418071232144971793, guid: 6fc4434af1178b3418a7044aeb49a4c5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.193
+      objectReference: {fileID: 0}
+    - target: {fileID: 2442313210807225860, guid: 6fc4434af1178b3418a7044aeb49a4c5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.193
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525927385997917988, guid: 6fc4434af1178b3418a7044aeb49a4c5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.193
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fc4434af1178b3418a7044aeb49a4c5, type: 3}
 --- !u!114 &114014577 stripped
@@ -238,7 +258,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 139612064}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.08, y: 1.44, z: -2.38}
+  m_LocalPosition: {x: 0.08, y: 1.87, z: -2.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 325341115}
@@ -4927,6 +4947,7 @@ MonoBehaviour:
   canBeStacked: 0
   hasAnObjectOn: 0
   isFalling: 0
+  actionUI: {fileID: 0}
 --- !u!65 &139612069
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5309,6 +5330,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.07
       objectReference: {fileID: 0}
+    - target: {fileID: 2056034830423225033, guid: 95db7264dba88b14f90fd5ed2f5fc38d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.87
+      objectReference: {fileID: 0}
     - target: {fileID: 2409301686950341674, guid: 95db7264dba88b14f90fd5ed2f5fc38d,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -5369,6 +5395,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ikea
       objectReference: {fileID: 0}
+    - target: {fileID: 1244725571572323907, guid: 270806ec2939efc4ca9bd21265ebec0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244725572181829637, guid: 270806ec2939efc4ca9bd21265ebec0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1244725573006307435, guid: 270806ec2939efc4ca9bd21265ebec0e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5422,16 +5458,6 @@ PrefabInstance:
     - target: {fileID: 1244725573006307435, guid: 270806ec2939efc4ca9bd21265ebec0e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1244725572181829637, guid: 270806ec2939efc4ca9bd21265ebec0e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1244725571572323907, guid: 270806ec2939efc4ca9bd21265ebec0e,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6047,16 +6073,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000311711, guid: fb9dde535b4da3e439bd0b2d28186ad0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5515659092840492348, guid: fb9dde535b4da3e439bd0b2d28186ad0,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4154448052796433754, guid: fb9dde535b4da3e439bd0b2d28186ad0,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000311715, guid: fb9dde535b4da3e439bd0b2d28186ad0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611163997463633540, guid: fb9dde535b4da3e439bd0b2d28186ad0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957782370411532379, guid: fb9dde535b4da3e439bd0b2d28186ad0,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5389341891006804516, guid: fb9dde535b4da3e439bd0b2d28186ad0,
@@ -6650,7 +6690,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746817610}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.08, y: 1.44, z: -0.22}
+  m_LocalPosition: {x: 0.08, y: 1.87, z: -0.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 325341115}
@@ -11339,6 +11379,7 @@ MonoBehaviour:
   canBeStacked: 0
   hasAnObjectOn: 0
   isFalling: 0
+  actionUI: {fileID: 0}
 --- !u!65 &1746817615
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11484,6 +11525,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ikea (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1244725571572323907, guid: 270806ec2939efc4ca9bd21265ebec0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244725572181829637, guid: 270806ec2939efc4ca9bd21265ebec0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1244725573006307435, guid: 270806ec2939efc4ca9bd21265ebec0e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11537,16 +11588,6 @@ PrefabInstance:
     - target: {fileID: 1244725573006307435, guid: 270806ec2939efc4ca9bd21265ebec0e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1244725572181829637, guid: 270806ec2939efc4ca9bd21265ebec0e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1244725571572323907, guid: 270806ec2939efc4ca9bd21265ebec0e,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -16270,6 +16311,7 @@ MonoBehaviour:
   canBeStacked: 0
   hasAnObjectOn: 0
   isFalling: 0
+  actionUI: {fileID: 0}
 --- !u!65 &2106322760
 BoxCollider:
   m_ObjectHideFlags: 0
