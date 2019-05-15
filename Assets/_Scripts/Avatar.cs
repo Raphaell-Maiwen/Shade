@@ -51,12 +51,13 @@ public class Avatar : MonoBehaviour {
             animator.SetBool("isIdle", true);
         }
 
+        //TODO: Refactor this
         if (Input.GetButtonDown("Rotate")) {
             if (readyToRotate) {
                 objectToRotate.GetComponent<Rotate>().RotateClockwise();
             }
         }
-        else if (Input.GetButtonDown("Pickup")) {
+        if (Input.GetButtonDown("Pickup")) {
             print("Pressing E " + readyToHold);
             if (readyToHold) {
                 TakeObject();
