@@ -50,16 +50,6 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update () {
-        //Update the shadows of all objects from all sources of light when they're moving
-        /*for (int i = 0; i < projectedObjects.Length; i++) {
-            if (projectedObjects[i].transform.hasChanged) {
-                for (int j = 0; j < sourcesOfLight.Length; j++) {
-                    sourcesOfLight[j].UpdateShadow(projectedObjects[i]);
-                }
-                projectedObjects[i].transform.hasChanged = false;
-            }
-        }*/
-
         //Switch between 3D and 2D worlds
         if (Input.GetButtonDown("Switch")) {
             avatarScript.enabled = !avatarScript.enabled;
@@ -108,7 +98,11 @@ public class GameManager : MonoBehaviour {
                 player.SetActive(true);
             }
         }
-	}
+
+        else if (Input.GetButtonDown("Reset") || Input.GetKeyDown(KeyCode.L)) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
 
     //Go through all the GameObjects from the scene and return only those that will get projected to the wall
     GameObject[] GetRelevantRenderedObjects() {

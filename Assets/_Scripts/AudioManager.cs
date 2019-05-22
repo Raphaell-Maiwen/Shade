@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
 
+    public bool notDeleting;
+
     //public static AudioManager instance;
 
     void Awake()
@@ -20,8 +22,9 @@ public class AudioManager : MonoBehaviour
             return;
         }*/
 
-        //Will we want to have the same theme?
-        //DontDestroyOnLoad(this.gameObject);
+        if (notDeleting) {
+            DontDestroyOnLoad(this.gameObject);
+        }
 
         foreach (Sound s in sounds) {
             s.source = gameObject.AddComponent<AudioSource>();
