@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -242,7 +242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -154, y: -19}
+  m_AnchoredPosition: {x: -154, y: 1}
   m_SizeDelta: {x: 471.4, y: 710.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &800861358
@@ -289,6 +289,9 @@ MonoBehaviour:
 
     Level Designer
 
+
+    Musician
+
 '
 --- !u!222 &800861359
 CanvasRenderer:
@@ -332,7 +335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 156, y: -15}
+  m_AnchoredPosition: {x: 156, y: 5}
   m_SizeDelta: {x: 611, y: 710.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &832188509
@@ -369,7 +372,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Jonna Anne Pedersen\n\nRapha\xEBlle Marcotte\n\nMarcello Folco\n\nJames
-    Lee Joseph"
+    Lee Joseph\n\nAnnie Huylenbroeck"
 --- !u!222 &832188510
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -412,7 +415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 159.8, y: -19}
+  m_AnchoredPosition: {x: 159.8, y: 1}
   m_SizeDelta: {x: 611, y: 710.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &900655104
@@ -449,7 +452,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Jonna Anne Pedersen\n\nRapha\xEBlle Marcotte\n\nMarcello Folco\n\nJames
-    Lee Joseph"
+    Lee Joseph\n\nAnnie Huylenbroeck"
 --- !u!222 &900655105
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -887,7 +890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -157.8, y: -15}
+  m_AnchoredPosition: {x: -157.8, y: 5}
   m_SizeDelta: {x: 471.4, y: 710.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1530419874
@@ -932,7 +935,10 @@ MonoBehaviour:
     Producer
 
 
-    Level Designer'
+    Level Designer
+
+
+    Musician'
 --- !u!222 &1530419875
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -975,7 +981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 58.200012, y: -286}
+  m_AnchoredPosition: {x: 58.200012, y: -304}
   m_SizeDelta: {x: 611, y: 710.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1675693149
@@ -1215,7 +1221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 62, y: -290}
+  m_AnchoredPosition: {x: 62, y: -308}
   m_SizeDelta: {x: 611, y: 710.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2048110653
