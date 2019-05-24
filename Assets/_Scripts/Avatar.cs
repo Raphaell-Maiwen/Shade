@@ -53,7 +53,7 @@ public class Avatar : MonoBehaviour {
         }
 
         //TODO: Refactor this
-        if (Input.GetButtonDown("Rotate")) {
+        if (Input.GetButtonDown("Rotate") && !isHolding) {
             if (readyToRotate) {
                 objectToRotate.GetComponent<Rotate>().RotateClockwise();
             }
