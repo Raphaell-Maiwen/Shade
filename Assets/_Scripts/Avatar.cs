@@ -52,15 +52,18 @@ public class Avatar : MonoBehaviour {
             animator.SetBool("isIdle", true);
         }
 
+        bool rotating = false;
+
         //TODO: Refactor this
-        if (Input.GetButtonDown("Rotate")) {
+        if (Input.GetButtonDown("Rotate") && !isHolding) {
             if (readyToRotate) {
                 objectToRotate.GetComponent<Rotate>().RotateClockwise();
+                rotating = true;
             }
         }
         if (Input.GetButtonDown("Pickup")) {
             print("Pressing E " + readyToHold);
-            if (readyToHold) {
+            if (readyToHold && !rotating) {
                 TakeObject();
             }
             else {
